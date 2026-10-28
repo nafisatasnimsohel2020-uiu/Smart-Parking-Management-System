@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkSmart - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for System Reports Visuals -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-logo">🚘 ParkSmart <span>Management System</span></div>
+            <div class="user-badge">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Razit Haque</strong>
+                    <p>Active session</p>
+                </div>
+            </div>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="active" onclick="switchTab('overview', this)">📊 Overview</li>
+            <li onclick="switchTab('parking-locations', this)">📍 Parking Locations</li>
+            <li onclick="switchTab('user-management', this)">👥 User Management</li>
+            <li onclick="switchTab('dynamic-pricing', this)">💲 Dynamic Pricing</li>
+            <li onclick="switchTab('system-reports', this)">📈 System Reports</li>
+            <li onclick="switchTab('violations', this)">⚠️ Violations</li>
+        </ul>
+
+        <a href="login.html" class="sidebar-logout">🚪 Logout</a>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="admin-main">
+        <header class="top-bar">
+            <h3 id="pageTitle">Overview</h3>
+            <div class="top-user"><div class="avatar-sm">A</div> Admin User</div>
+        </header>
+
+        <div class="tab-content-container">
+
+            <!-- 1. OVERVIEW TAB -->
+            <div id="tab-overview" class="tab-pane active">
+                
+                <!-- TOP METRICS GRID -->
+                <div class="overview-metrics-grid">
+                    <div class="overview-card">
+                        <div class="ov-card-top">
+                            <span class="ov-title">Total Revenue (Jul)</span>
+                            <div class="icon-bg teal">৳</div>
+                        </div>
+                        <h2 class="ov-value">৳42,300</h2>
+                        <span class="ov-subtext success">+9.6%</span>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="ov-card-top">
+                            <span class="ov-title">Active Reservations</span>
+                            <div class="icon-bg blue">🚘</div>
+                        </div>
+                        <h2 class="ov-value">284</h2>
+                        <span class="ov-subtext success">+14%</span>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="ov-card-top">
+                            <span class="ov-title">Registered Drivers</span>
+                            <div class="icon-bg purple">👥</div>
+                        </div>
+                        <h2 class="ov-value">3,847</h2>
+                        <span class="ov-subtext">+231 this month</span>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="ov-card-top">
+                            <span class="ov-title">Parking Locations</span>
+                            <div class="icon-bg orange">📍</div>
+                        </div>
+                        <h2 class="ov-value">24</h2>
+                        <span class="ov-subtext">2 pending approval</span>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="ov-card-top">
+                            <span class="ov-title">Open Violations</span>
+                            <div class="icon-bg red">⚠️</div>
+                        </div>
+                        <h2 class="ov-value">17</h2>
+                        <span class="ov-subtext">-3 from last week</span>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="ov-card-top">
+                            <span class="ov-title">Avg. Occupancy</span>
+                            <div class="icon-bg green">📈</div>
+                        </div>
+                        <h2 class="ov-value">68%</h2>
+                        <span class="ov-subtext success">+4% vs Jun</span>
+                    </div>
+                </div>
+
+                <!-- PENDING MANAGER APPROVALS -->
+                <div class="admin-card" id="pendingManagerApprovalsCard" style="display: none;">
+                    <div class="page-head">
+                        <h3>Pending Manager Approvals</h3>
+                        <span class="badge-tag-orange custom-badge" id="pendingManagerCountBadge">0</span>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>MANAGER</th>
+                                <th>EMAIL</th>
+                                <th>PHONE</th>
+                                <th>REQUESTED</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pendingManagerApprovalsBody"></tbody>
+                    </table>
+                </div>
+
+                <!-- RECENT RESERVATIONS TABLE -->
+                <div class="admin-card">
+                    <div class="page-head">
+                        <h3>Recent Reservations</h3>
+                        <span class="badge-tag-blue">Live</span>
+                    </div>
+
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>BOOKING ID</th>
+                                <th>DRIVER</th>
+                                <th>LOCATION</th>
+                                <th>SPACE</th>
+                                <th>TIME</th>
+                                <th>STATUS</th>
+                                <th>AMOUNT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentReservationsBody">
+                            <tr>
+                                <td><strong class="purple-text">R-4821</strong></td>
+                                <td>Shafiq Ahmed</td>
+                                <td>Mirpur Parking</td>
+                                <td class="purple-text">A-14</td>
+                                <td>09:00 – 12:00</td>
+                                <td><span class="badge-available">Active</span></td>
+                                <td><strong>৳10.50</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong class="purple-text">R-4820</strong></td>
+                                <td>Rafsan Rahman</td>
+                                <td>Motijheel Parking</td>
+                                <td class="purple-text">B-07</td>
+                                <td>08:00 – 10:00</td>
+                                <td><span class="badge-completed">Completed</span></td>
+                                <td><strong>৳5.50</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong class="purple-text">R-4819</strong></td>
+                                <td>Tanveer Hossain</td>
+                                <td>Dhanmondi Parking</td>
+                                <td class="purple-text">C-22</td>
+                                <td>13:00 – 17:00</td>
+                                <td><span class="badge-upcoming">Upcoming</span></td>
+                                <td><strong>৳8.00</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong class="purple-text">R-4818</strong></td>
+                                <td>Farzana Yasmin</td>
+                                <td>Mirpur Parking</td>
+                                <td class="purple-text">A-03</td>
+                                <td>07:30 – 09:00</td>
+                                <td><span class="badge-completed">Completed</span></td>
+                                <td><strong>৳5.25</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong class="purple-text">R-4817</strong></td>
+                                <td>Mahabub Alam</td>
+                                <td>Rampura Tower Parking</td>
+                                <td class="purple-text">D-44</td>
+                                <td>10:00 – 14:00</td>
+                                <td><span class="badge-full">Cancelled</span></td>
+                                <td><strong>৳16.00</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- 2. PARKING LOCATIONS TAB -->
+            <div id="tab-parking-locations" class="tab-pane">
+                <div class="locations-container">
+                    <div class="page-header">
+                        <div>
+                            <h2>Parking Locations</h2>
+                            <p>5 locations in the system</p>
+                        </div>
+                        <button class="btn-add"><i class="fa-solid fa-plus"></i> Add Location</button>
+                    </div>
+
+                    <div class="location-list">
+                        <div class="location-card">
+                            <div class="card-top">
+                                <div class="location-info">
+                                    <div class="loc-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="loc-details">
+                                        <h3>Mirpur Parking <span class="badge badge-active">Active</span></h3>
+                                        <p>Mirpur-10, Dhaka</p>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="action-btn delete"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><span class="stat-label">Spaces</span><span class="stat-value">34 / 120</span></div>
+                                <div class="stat-item"><span class="stat-label">Rate</span><span class="stat-value rate">৳100/hr</span></div>
+                                <div class="stat-item"><span class="stat-label">Manager</span><span class="stat-value">Rachel Kim</span></div>
+                                <div class="stat-item flex-grow">
+                                    <span class="stat-label">Occupancy</span>
+                                    <div class="progress-section">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill bg-teal p-72"></div></div>
+                                        <div class="progress-text">72% occupied</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-card">
+                            <div class="card-top">
+                                <div class="location-info">
+                                    <div class="loc-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="loc-details">
+                                        <h3>Motijheel Parking <span class="badge badge-active">Active</span></h3>
+                                        <p>Motijheel C/A, Dhaka</p>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="action-btn delete"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><span class="stat-label">Spaces</span><span class="stat-value">12 / 80</span></div>
+                                <div class="stat-item"><span class="stat-label">Rate</span><span class="stat-value rate">৳200/hr</span></div>
+                                <div class="stat-item"><span class="stat-label">Manager</span><span class="stat-value">Tom Vasquez</span></div>
+                                <div class="stat-item flex-grow">
+                                    <span class="stat-label">Occupancy</span>
+                                    <div class="progress-section">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill bg-teal p-85"></div></div>
+                                        <div class="progress-text">85% occupied</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-card">
+                            <div class="card-top">
+                                <div class="location-info">
+                                    <div class="loc-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="loc-details">
+                                        <h3>Dhanmondi Parking <span class="badge badge-active">Active</span></h3>
+                                        <p>Dhanmondi 27, Dhaka</p>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="action-btn delete"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><span class="stat-label">Spaces</span><span class="stat-value">87 / 200</span></div>
+                                <div class="stat-item"><span class="stat-label">Rate</span><span class="stat-value rate">৳300/hr</span></div>
+                                <div class="stat-item"><span class="stat-label">Manager</span><span class="stat-value">Amy Zhou</span></div>
+                                <div class="stat-item flex-grow">
+                                    <span class="stat-label">Occupancy</span>
+                                    <div class="progress-section">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill bg-teal p-56"></div></div>
+                                        <div class="progress-text">56% occupied</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-card">
+                            <div class="card-top">
+                                <div class="location-info">
+                                    <div class="loc-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="loc-details">
+                                        <h3>Rampura Tower Parking <span class="badge badge-active">Active</span></h3>
+                                        <p>Rampura, Dhaka</p>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="action-btn delete"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><span class="stat-label">Spaces</span><span class="stat-value">0 / 300</span></div>
+                                <div class="stat-item"><span class="stat-label">Rate</span><span class="stat-value rate">৳100/hr</span></div>
+                                <div class="stat-item"><span class="stat-label">Manager</span><span class="stat-value">Derek Hall</span></div>
+                                <div class="stat-item flex-grow">
+                                    <span class="stat-label">Occupancy</span>
+                                    <div class="progress-section">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill bg-red p-100"></div></div>
+                                        <div class="progress-text text-red">100% occupied</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-card">
+                            <div class="card-top">
+                                <div class="location-info">
+                                    <div class="loc-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="loc-details">
+                                        <h3>Uttara Parking <span class="badge badge-pending">Pending</span></h3>
+                                        <p>Uttara, Dhaka</p>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="action-btn delete"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-stats">
+                                <div class="stat-item"><span class="stat-label">Spaces</span><span class="stat-value">62 / 150</span></div>
+                                <div class="stat-item"><span class="stat-label">Rate</span><span class="stat-value rate">৳150/hr</span></div>
+                                <div class="stat-item"><span class="stat-label">Manager</span><span class="stat-value">Unassigned</span></div>
+                                <div class="stat-item flex-grow">
+                                    <span class="stat-label">Occupancy</span>
+                                    <div class="progress-section">
+                                        <div class="progress-bar-bg"><div class="progress-bar-fill bg-teal p-59"></div></div>
+                                        <div class="progress-text">59% occupied</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. USER MANAGEMENT TAB -->
+            <div id="tab-user-management" class="tab-pane">
+              <div class="page-head">
+                <div>
+                  <h2>User Management</h2>
+                  <p class="sub-text">Manage registered administrators, facility managers, and drivers</p>
+                </div>
+                <button class="btn-add" id="openCreateUserModalBtn"><i class="fa-solid fa-user-plus"></i> Create Account</button>
+              </div>
+
+              <div class="admin-card user-filter-card">
+                <div class="btn-group">
+                  <button class="btn-teal-full sm-btn" id="filterDriversBtn">Drivers</button>
+                  <button class="btn-outline sm-btn" id="filterManagersBtn">Managers</button>
+                  <button class="btn-outline sm-btn" id="filterAdminsBtn">Admins</button>
+                </div>
+              </div>
+
+              <div class="admin-card">
+                <div class="search-box">
+                  <input type="text" placeholder="Search drivers..." class="form-control">
+                </div>
+
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>DRIVER</th>
+                      <th>PLATE</th>
+                      <th>RESERVATIONS</th>
+                      <th>PASSWORD</th>
+                      <th>JOINED</th>
+                      <th>STATUS</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="userManagementBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 4. DYNAMIC PRICING TAB -->
+            <div id="tab-dynamic-pricing" class="tab-pane">
+                <div class="page-head mb-1">
+                    <div>
+                        <h2>Dynamic Pricing Engine</h2>
+                        <p class="sub-text">Configure automatic surge multipliers and peak hour rates based on location demand.</p>
+                    </div>
+                    <button class="btn-teal-full pricing-head-btn"><i class="fa-solid fa-plus"></i> Add Pricing Rule</button>
+                </div>
+
+                <div class="banner-alert mb-1-5">
+                    🕒 <strong>Active Policy:</strong> Rates automatically scale up by +25% to +50% during high-occupancy hours (>80% capacity) or peak corporate commute times.
+                </div>
+
+                <div class="pricing-grid">
+                    <div class="admin-card mb-0">
+                        <div class="page-head mb-0-8">
+                            <h3 class="card-title">Mirpur Parking</h3>
+                            <span class="badge-available">Enabled</span>
+                        </div>
+                        <div class="pricing-info-list">
+                            <div class="info-row">
+                                <span class="sub-text">Base Rate:</span>
+                                <strong>৳100 / hr</strong>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Peak Surge Multiplier:</span>
+                                <strong class="purple-text">1.5x (৳150 / hr)</strong>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Peak Hours Window:</span>
+                                <span>08:00 AM – 11:00 AM</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Occupancy Threshold:</span>
+                                <span>> 75% Capacity</span>
+                            </div>
+                            <button class="btn-outline edit-rule-btn">Edit Pricing Rules</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-card mb-0">
+                        <div class="page-head mb-0-8">
+                            <h3 class="card-title">Motijheel Parking</h3>
+                            <span class="badge-available">Enabled</span>
+                        </div>
+                        <div class="pricing-info-list">
+                            <div class="info-row">
+                                <span class="sub-text">Base Rate:</span>
+                                <strong>৳200 / hr</strong>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Peak Surge Multiplier:</span>
+                                <strong class="purple-text">1.4x (৳280 / hr)</strong>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Peak Hours Window:</span>
+                                <span>09:00 AM – 01:00 PM</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Occupancy Threshold:</span>
+                                <span>> 80% Capacity</span>
+                            </div>
+                            <button class="btn-outline edit-rule-btn">Edit Pricing Rules</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-card mb-0">
+                        <div class="page-head mb-0-8">
+                            <h3 class="card-title">Dhanmondi Parking</h3>
+                            <span class="badge-tag-orange custom-badge">Custom Rule</span>
+                        </div>
+                        <div class="pricing-info-list">
+                            <div class="info-row">
+                                <span class="sub-text">Base Rate:</span>
+                                <strong>৳300 / hr</strong>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Peak Surge Multiplier:</span>
+                                <strong class="purple-text">1.3x (৳390 / hr)</strong>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Peak Hours Window:</span>
+                                <span>05:00 PM – 09:00 PM</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="sub-text">Occupancy Threshold:</span>
+                                <span>> 70% Capacity</span>
+                            </div>
+                            <button class="btn-outline edit-rule-btn">Edit Pricing Rules</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. SYSTEM REPORTS TAB -->
+            <div id="tab-system-reports" class="tab-pane">
+                
+                <!-- Page Title & Header Actions -->
+                <div class="page-head sys-report-head">
+                    <div>
+                        <h2 class="report-heading">System Reports</h2>
+                        <p class="sub-text report-subheading">Monthly revenue, occupancy & reservation analytics</p>
+                    </div>
+                    <button class="btn-teal-full download-btn" id="downloadFullReportBtn">
+                        <i class="fa-solid fa-download"></i> Download Report
+                    </button>
+                </div>
+
+                <!-- 4 Top Cards Metric Layout -->
+                <div class="overview-metrics-grid report-card-grid">
+                    
+                    <div class="overview-card sys-card">
+                        <span class="sys-card-title">YTD Revenue</span>
+                        <h2 class="sys-card-val">226,700 bdt</h2>
+                        <span class="sys-card-sub">7 months</span>
+                    </div>
+
+                    <div class="overview-card sys-card">
+                        <span class="sys-card-title">Total Reservations</span>
+                        <h2 class="sys-card-val">10,010</h2>
+                        <span class="sys-card-sub">2025</span>
+                    </div>
+
+                    <div class="overview-card sys-card">
+                        <span class="sys-card-title">Avg Monthly Revenue</span>
+                        <h2 class="sys-card-val">32,386 bdt</h2>
+                        <span class="sys-card-sub">per month</span>
+                    </div>
+
+                    <div class="overview-card sys-card">
+                        <span class="sys-card-title">Total Violations</span>
+                        <h2 class="sys-card-val">77</h2>
+                        <span class="sys-card-sub">reported</span>
+                    </div>
+
+                </div>
+
+                <!-- Main Chart Card: Monthly Revenue & Reservations -->
+                <div class="admin-card sys-chart-card">
+                    <h3 class="chart-title">Monthly Revenue & Reservations</h3>
+                    <p class="chart-subtitle">January – July 2025</p>
+                    
+                    <div class="main-chart-wrapper">
+                        <canvas id="monthlyRevenueChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Two Side-by-Side Chart Cards -->
+                <div class="side-charts-grid">
+                    
+                    <!-- Left: Revenue by Location -->
+                    <div class="admin-card mb-0">
+                        <h3 class="chart-title mb-1-5">Revenue by Location (Jul)</h3>
+                        
+                        <div class="location-progress-list">
+                            <!-- Mirpur -->
+                            <div>
+                                <div class="loc-progress-info">
+                                    <span class="loc-name">Mirpur</span>
+                                    <span class="loc-val">14,200</span>
+                                </div>
+                                <div class="bar-bg">
+                                    <div class="bar-fill p-100"></div>
+                                </div>
+                            </div>
+
+                            <!-- Rampura -->
+                            <div>
+                                <div class="loc-progress-info">
+                                    <span class="loc-name">Rampura</span>
+                                    <span class="loc-val">12,800</span>
+                                </div>
+                                <div class="bar-bg">
+                                    <div class="bar-fill p-88"></div>
+                                </div>
+                            </div>
+
+                            <!-- Motijheel -->
+                            <div>
+                                <div class="loc-progress-info">
+                                    <span class="loc-name">Motijheel</span>
+                                    <span class="loc-val">8,400</span>
+                                </div>
+                                <div class="bar-bg">
+                                    <div class="bar-fill p-58 bg-light-teal"></div>
+                                </div>
+                            </div>
+
+                            <!-- Dhanmondi Hub -->
+                            <div>
+                                <div class="loc-progress-info">
+                                    <span class="loc-name">Dhanmondi Hub</span>
+                                    <span class="loc-val">6,900</span>
+                                </div>
+                                <div class="bar-bg">
+                                    <div class="bar-fill p-48 bg-soft-teal"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Violations Trend -->
+                    <div class="admin-card mb-0">
+                        <h3 class="chart-title">Violations Trend</h3>
+                        <p class="chart-subtitle">Monthly count</p>
+                        
+                        <div class="small-chart-wrapper">
+                            <canvas id="violationsTrendChart"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Available Reports Download Section -->
+                <div class="admin-card">
+                    <h3 class="chart-title mb-1-2">Available Reports</h3>
+                    
+                    <div class="report-list" id="availableReportsList"></div>
+                </div>
+
+            </div>
+
+            <!-- 6. VIOLATIONS TAB (UPDATED FROM SCREENSHOT) -->
+            <div id="tab-violations" class="tab-pane">
+                <div class="page-head mb-1-5">
+                    <div>
+                        <h2>Violations Management</h2>
+                        <p class="sub-text">Categories, active violations, and resolution tracking</p>
+                    </div>
+                    <button class="btn-teal-full btn-add-cat"><i class="fa-solid fa-plus"></i> Add Category</button>
+                </div>
+
+                <!-- Violation Categories Horizontal Scroll / Grid -->
+                <div class="admin-card mb-1-5">
+                    <h4 class="card-sec-title">Violation Categories</h4>
+                    <div class="vio-categories-grid">
+                        
+                        <div class="vio-cat-card">
+                            <div class="vio-cat-top">
+                                <strong>Unauthorized Parking</strong>
+                                <span class="badge-level high">HIGH</span>
+                            </div>
+                            <div class="vio-cat-bottom">
+                                <span class="sub-text">Fine: <strong class="fine-amt">150 bdt</strong></span>
+                                <span class="case-cnt">34 cases</span>
+                            </div>
+                        </div>
+
+                        <div class="vio-cat-card">
+                            <div class="vio-cat-top">
+                                <strong>Overstay</strong>
+                                <span class="badge-level medium">MEDIUM</span>
+                            </div>
+                            <div class="vio-cat-bottom">
+                                <span class="sub-text">Fine: <strong class="fine-amt">750 bdt</strong></span>
+                                <span class="case-cnt">58 cases</span>
+                            </div>
+                        </div>
+
+                        <div class="vio-cat-card">
+                            <div class="vio-cat-top">
+                                <strong>Double Parking</strong>
+                                <span class="badge-level high">HIGH</span>
+                            </div>
+                            <div class="vio-cat-bottom">
+                                <span class="sub-text">Fine: <strong class="fine-amt">200 bdt</strong></span>
+                                <span class="case-cnt">12 cases</span>
+                            </div>
+                        </div>
+
+                        <div class="vio-cat-card">
+                            <div class="vio-cat-top">
+                                <strong>Blocked Fire Lane</strong>
+                                <span class="badge-level critical">CRITICAL</span>
+                            </div>
+                            <div class="vio-cat-bottom">
+                                <span class="sub-text">Fine: <strong class="fine-amt">500 bdt</strong></span>
+                                <span class="case-cnt">5 cases</span>
+                            </div>
+                        </div>
+
+                        <div class="vio-cat-card">
+                            <div class="vio-cat-top">
+                                <strong>No Valid Reservation</strong>
+                                <span class="badge-level medium">MEDIUM</span>
+                            </div>
+                            <div class="vio-cat-bottom">
+                                <span class="sub-text">Fine: <strong class="fine-amt">100 bdt</strong></span>
+                                <span class="case-cnt">29 cases</span>
+                            </div>
+                        </div>
+
+                        <div class="vio-cat-card">
+                            <div class="vio-cat-top">
+                                <strong>Handicap Zone Violation</strong>
+                                <span class="badge-level critical">CRITICAL</span>
+                            </div>
+                            <div class="vio-cat-bottom">
+                                <span class="sub-text">Fine: <strong class="fine-amt">450 bdt</strong></span>
+                                <span class="case-cnt">8 cases</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Active Violations Table -->
+                <div class="admin-card">
+                    <div class="page-head mb-1">
+                        <div class="vio-table-title">
+                            <i class="fa-solid fa-triangle-exclamation vio-icon"></i>
+                            <strong>Active Violations</strong>
+                        </div>
+                        <span class="badge-open">3 open</span>
+                    </div>
+
+                    <table class="admin-table vio-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>DRIVER / PLATE</th>
+                                <th>LOCATION</th>
+                                <th>CATEGORY</th>
+                                <th>DATE</th>
+                                <th>FINE</th>
+                                <th>STATUS</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="purple-text">V-0291</td>
+                                <td>
+                                    <strong>Nafisa Tasnim</strong><br>
+                                    <span class="purple-text plate-code">WA-3312</span>
+                                </td>
+                                <td>Mirpur Parking</td>
+                                <td>Overstay</td>
+                                <td>Jul 14, 2025</td>
+                                <td class="danger-text">755 bdt</td>
+                                <td><span class="badge-status open">Open</span></td>
+                                <td><button class="btn-resolve">✓ Resolve</button></td>
+                            </tr>
+                            <tr>
+                                <td class="purple-text">V-0290</td>
+                                <td>
+                                    <strong>Shamsil Arefin</strong><br>
+                                    <span class="purple-text plate-code">IL-8890</span>
+                                </td>
+                                <td>Motijheel Parking</td>
+                                <td>No Valid Reservation</td>
+                                <td>Jul 13, 2025</td>
+                                <td class="danger-text">100 bdt</td>
+                                <td><span class="badge-status resolved">Resolved</span></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="purple-text">V-0289</td>
+                                <td>
+                                    <strong>Unknown</strong><br>
+                                    <span class="purple-text plate-code">TX-5512</span>
+                                </td>
+                                <td>Rampura Parking</td>
+                                <td>Blocked Fire Lane</td>
+                                <td>Jul 12, 2025</td>
+                                <td class="danger-text">500 bdt</td>
+                                <td><span class="badge-status open">Open</span></td>
+                                <td><button class="btn-resolve">✓ Resolve</button></td>
+                            </tr>
+                            <tr>
+                                <td class="purple-text">V-0288</td>
+                                <td>
+                                    <strong>Sharmila Shikder</strong><br>
+                                    <span class="purple-text plate-code">CA-4821</span>
+                                </td>
+                                <td>Dhanmondi Parking</td>
+                                <td>Overstay</td>
+                                <td>Jul 11, 2025</td>
+                                <td class="danger-text">750bdt</td>
+                                <td><span class="badge-status disputed">Disputed</span></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="purple-text">V-0287</td>
+                                <td>
+                                    <strong>Unknown</strong><br>
+                                    <span class="purple-text plate-code">NY-0044</span>
+                                </td>
+                                <td>Mirpur Parking</td>
+                                <td>Unauthorized Parking</td>
+                                <td>Jul 10, 2025</td>
+                                <td class="danger-text">150 bdt</td>
+                                <td><span class="badge-status open">Open</span></td>
+                                <td><button class="btn-resolve">✓ Resolve</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CREATE USER ACCOUNT MODAL -->
+        <div id="createUserModal" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); z-index: 999; justify-content: center; align-items: center; padding: 20px;">
+            <div style="background: #ffffff; border-radius: 12px; width: 100%; max-width: 500px; padding: 24px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); position: relative; max-height: 90vh; overflow-y: auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px;">
+                    <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0;"><i class="fa-solid fa-user-plus" style="color: #0d9488; margin-right: 8px;"></i> Create User Account</h3>
+                    <button type="button" id="closeCreateUserModalBtn" style="background: none; border: none; font-size: 1.25rem; color: #94a3b8; cursor: pointer;">✕</button>
+                </div>
+                <form id="createUserForm">
+                    <div style="margin-bottom: 12px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 4px;">Account Role</label>
+                        <select id="newUserRole" class="form-control" required style="width: 100%; height: 38px;">
+                            <option value="driver">Driver (Find, reserve & park)</option>
+                            <option value="manager">Parking Manager (Manage area facility)</option>
+                            <option value="admin">Administrator (Full system control)</option>
+                        </select>
+                    </div>
+
+                    <div id="newUserManagerLocationGroup" style="display: none; margin-bottom: 12px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 4px;">Assigned Parking Facility</label>
+                        <select id="newUserManagerLocation" class="form-control" style="width: 100%; height: 38px;">
+                            <!-- populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 12px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 4px;">Full Name</label>
+                        <input type="text" id="newUserName" class="form-control" placeholder="e.g. Sabbir Rahman" required>
+                    </div>
+
+                    <div style="margin-bottom: 12px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 4px;">Email Address</label>
+                        <input type="email" id="newUserEmail" class="form-control" placeholder="e.g. name@uiu.ac.bd or name@parksmart.io" required>
+                    </div>
+
+                    <div style="margin-bottom: 12px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 4px;">Phone Number</label>
+                        <input type="tel" id="newUserPhone" class="form-control" placeholder="+8801700000000" required>
+                    </div>
+
+                    <div id="newUserPlateGroup" style="margin-bottom: 12px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 4px;">Vehicle Plate (Drivers)</label>
+                        <input type="text" id="newUserPlate" class="form-control" placeholder="e.g. DHA-METRO-GA-1234">
+                    </div>
+
+                    <div style="margin-bottom: 18px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #334155; margin-bottom: 4px;">Temporary / Initial Password</label>
+                        <input type="password" id="newUserPassword" class="form-control" value="123456" minlength="6" required>
+                        <small style="color: #64748b; font-size: 11px;">Default is 123456 (can be customized)</small>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                        <button type="button" id="cancelCreateUserBtn" class="btn-outline" style="padding: 8px 16px;">Cancel</button>
+                        <button type="submit" class="btn-teal-full" style="padding: 8px 18px; font-weight: 600;">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function switchTab(tabId, el) {
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            document.querySelectorAll('.sidebar-menu li').forEach(item => item.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabId).classList.add('active');
+            el.classList.add('active');
+            
+            const words = tabId.split('-');
+            const title = words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+            document.getElementById('pageTitle').innerText = title;
+        }
+
+    </script>
+    <script src="../js/session.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkSmart - Smart Parking System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚘</span> ParkSmart
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#locations">Locations</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="login.html" class="btn-signin">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-wrapper" id="hero">
+        <div class="hero-body">
+            <span class="badge-tag">Smart Parking System</span>
+            <h1>Find & Reserve Your <br><span class="highlight">Parking Space</span></h1>
+            <p>Real-time availability, Instant reservations, and seamless check-in/out — all in one place.</p>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Search parking locations...">
+                <button>Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h2 id="statLocations">24</h2>
+                <p>Parking Locations</p>
+            </div>
+            <div class="stat-item">
+                <h2 id="statSpaces">3,200+</h2>
+                <p>Total Spaces</p>
+            </div>
+            <div class="stat-item">
+                <h2 id="statDrivers">12,400</h2>
+                <p>Active Drivers</p>
+            </div>
+            <div class="stat-item">
+                <h2 id="statRating">4.7 ★</h2>
+                <p>Avg. Rating</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOCATIONS -->
+    <section class="content-container" id="locations">
+        <div class="section-header">
+            <h2>Available Locations</h2>
+            <p>5 parking areas found</p>
+        </div>
+
+        <div class="locations-grid">
+            <div class="location-card">
+                <div class="card-top">
+                    <div>
+                        <h3>Mirpur Parking</h3>
+                        <p class="sub-text">Mirpur-10, Dhaka</p>
+                    </div>
+                    <span class="badge-available">Available</span>
+                </div>
+                <div class="slot-info"><span>34 available</span><span>120 total</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
+                <div class="card-bottom">
+                    <div class="price">৳100<span>/hr</span></div>
+                    <div class="rating">★ 4.8</div>
+                </div>
+                <a href="login.html" class="btn-teal-full text-center">Reserve Now</a>
+            </div>
+
+            <div class="location-card">
+                <div class="card-top">
+                    <div>
+                        <h3>Motijheel</h3>
+                        <p class="sub-text">Motijheel C/A, Dhaka</p>
+                    </div>
+                    <span class="badge-almost">Almost Full</span>
+                </div>
+                <div class="slot-info"><span>12 available</span><span>80 total</span></div>
+                <div class="progress-bar"><div class="progress-fill warning" style="width: 85%;"></div></div>
+                <div class="card-bottom">
+                    <div class="price">৳200<span>/hr</span></div>
+                    <div class="rating">★ 4.5</div>
+                </div>
+                <a href="login.html" class="btn-teal-full text-center">Reserve Now</a>
+            </div>
+
+            <div class="location-card">
+                <div class="card-top">
+                    <div>
+                        <h3>Dhanmondi Auto Hub</h3>
+                        <p class="sub-text">Dhanmondi 27, Dhaka</p>
+                    </div>
+                    <span class="badge-available">Available</span>
+                </div>
+                <div class="slot-info"><span>87 available</span><span>200 total</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 55%;"></div></div>
+                <div class="card-bottom">
+                    <div class="price">৳300<span>/hr</span></div>
+                    <div class="rating">★ 4.3</div>
+                </div>
+                <a href="login.html" class="btn-teal-full text-center">Reserve Now</a>
+            </div>
+
+            <div class="location-card">
+                <div class="card-top">
+                    <div>
+                        <h3>UIU Campus Smart Parking</h3>
+                        <p class="sub-text">Madani Avenue, Badda, Dhaka</p>
+                    </div>
+                    <span class="badge-available">Available</span>
+                </div>
+                <div class="slot-info"><span>28 available</span><span>30 total</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+                <div class="card-bottom">
+                    <div class="price">৳30<span>/hr</span></div>
+                    <div class="rating">★ 4.9</div>
+                </div>
+                <a href="login.html" class="btn-teal-full text-center">Reserve Now</a>
+            </div>
+
+            <div class="location-card">
+                <div class="card-top">
+                    <div>
+                        <h3>Gulshan Commercial Zone</h3>
+                        <p class="sub-text">Road 45, Gulshan-2, Dhaka</p>
+                    </div>
+                    <span class="badge-available">Available</span>
+                </div>
+                <div class="slot-info"><span>18 available</span><span>20 total</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+                <div class="card-bottom">
+                    <div class="price">৳250<span>/hr</span></div>
+                    <div class="rating">★ 4.9</div>
+                </div>
+                <a href="login.html" class="btn-teal-full text-center">Reserve Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section-padding bg-white" id="features">
+        <div class="section-center-title">
+            <h2>Why Choose ParkSmart?</h2>
+        </div>
+        <div class="features-three-grid">
+            <div class="feature-card">
+                <div class="f-icon">📍</div>
+                <h3>Real-Time Availability</h3>
+                <p>See live parking space status across all locations instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="f-icon">🕒</div>
+                <h3>Time-Slot Reservations</h3>
+                <p>Book your spot in advance with flexible time-slot scheduling.</p>
+            </div>
+            <div class="feature-card">
+                <div class="f-icon">🛡️</div>
+                <h3>OTP Verified Check-In</h3>
+                <p>Secure one-time password check-in/out for every reservation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section-padding bg-alt-light" id="pricing">
+        <div class="section-center-title">
+            <h2>Pricing</h2>
+            <p>Dynamic pricing per location. Pay only for the time you use.</p>
+        </div>
+        <div class="pricing-four-grid">
+            <div class="price-box">
+                <h4>Mirpur Parking</h4>
+                <div class="p-amount">৳100<span>/hr</span></div>
+                <p class="p-loc">Mirpur-10, Dhaka</p>
+            </div>
+            <div class="price-box">
+                <h4>Motijheel Parking</h4>
+                <div class="p-amount">৳200<span>/hr</span></div>
+                <p class="p-loc">Motijheel C/A, Dhaka</p>
+            </div>
+            <div class="price-box">
+                <h4>Dhanmondi Parking</h4>
+                <div class="p-amount">৳300<span>/hr</span></div>
+                <p class="p-loc">Dhanmondi 27, Dhaka</p>
+            </div>
+            <div class="price-box">
+                <h4>UIU Campus Parking</h4>
+                <div class="p-amount">৳30<span>/hr</span></div>
+                <p class="p-loc">Madani Ave, Badda, Dhaka</p>
+            </div>
+            <div class="price-box">
+                <h4>Gulshan Parking</h4>
+                <div class="p-amount">৳250<span>/hr</span></div>
+                <p class="p-loc">Road 45, Gulshan-2, Dhaka</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CONTACT -->
+    <footer class="contact-footer-wrapper" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact & Support</h2>
+                <p class="sub">Need help with your reservation or have a parking issue? Our support team is available 24/7.</p>
+                <div class="info-list">
+                    <div class="info-item"><span>📞</span>+8801710051803</div>
+                    <div class="info-item"><span>✉️</span> support@parksmart.io</div>
+                    <div class="info-item"><span>📍</span>United International University, UIU</div>
+                </div>
+            </div>
+            <div class="contact-form-card">
+                <h3>Send a Message</h3>
+                <div id="landingContactAlert" style="display:none; padding:10px; border-radius:6px; font-size:13px; margin-bottom:12px;"></div>
+                <form id="landingContactForm" onsubmit="handleLandingContact(event)">
+                    <input type="text" id="landingName" placeholder="Your name" required>
+                    <input type="email" id="landingEmail" placeholder="Email address" required>
+                    <textarea id="landingMsg" placeholder="Your message..." rows="4" required></textarea>
+                    <button type="submit" id="landingSubmitBtn" class="btn-teal-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Load real-time stats (locations, spaces, active drivers, avg rating)
+    async function loadLandingStats() {
+        try {
+            const res = await fetch("../backend/guest/landing_stats.php").then(r => r.json());
+            if (!res.success) return;
+            const s = res.stats;
+
+            const elLoc = document.getElementById("statLocations");
+            const elSpaces = document.getElementById("statSpaces");
+            const elDrivers = document.getElementById("statDrivers");
+            const elRating = document.getElementById("statRating");
+
+            if (elLoc) elLoc.textContent = s.total_locations;
+            if (elSpaces) elSpaces.textContent = s.total_spaces.toLocaleString();
+            if (elDrivers) elDrivers.textContent = s.active_drivers.toLocaleString();
+            if (elRating) elRating.textContent = `${s.avg_rating > 0 ? s.avg_rating.toFixed(1) : "5.0"} ★`;
+        } catch (e) {
+            console.error("Could not load landing stats:", e);
+        }
+    }
+    document.addEventListener("DOMContentLoaded", loadLandingStats);
+    setInterval(loadLandingStats, 15000);
+
+    async function handleLandingContact(e) {
+        e.preventDefault();
+        const name = document.getElementById("landingName").value.trim();
+        const email = document.getElementById("landingEmail").value.trim();
+        const message = document.getElementById("landingMsg").value.trim();
+        const alertBox = document.getElementById("landingContactAlert");
+        const btn = document.getElementById("landingSubmitBtn");
+
+        btn.disabled = true;
+        btn.textContent = "Sending...";
+        try {
+            const res = await fetch("../backend/guest/contact.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, subject: "Landing Page Inquiry", message })
+            }).then(r => r.json());
+
+            btn.disabled = false;
+            btn.textContent = "Send Message";
+            if (alertBox) {
+                alertBox.style.display = "block";
+                if (res.success) {
+                    alertBox.style.background = "#dcfce7";
+                    alertBox.style.color = "#15803d";
+                    alertBox.textContent = "✔ " + res.message;
+                    document.getElementById("landingContactForm").reset();
+                } else {
+                    alertBox.style.background = "#fed7d7";
+                    alertBox.style.color = "#9b2c2c";
+                    alertBox.textContent = "✖ " + res.message;
+                }
+            }
+        } catch (err) {
+            btn.disabled = false;
+            btn.textContent = "Send Message";
+            if (alertBox) {
+                alertBox.style.display = "block";
+                alertBox.style.background = "#fed7d7";
+                alertBox.style.color = "#9b2c2c";
+                alertBox.textContent = "✖ Network error. Please try again.";
+            }
+        }
+    }
+    </script>
+
+</body>
+</html>
