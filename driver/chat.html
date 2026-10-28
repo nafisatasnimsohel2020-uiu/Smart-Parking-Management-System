@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Manager - Smart Parking System</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+
+    <!-- Sidebar Layout -->
+    <aside class="sidebar">
+        <div>
+            <div class="logo-area">
+                <div class="logo-icon">P</div>
+                <div class="logo-text">
+                    <h2>Smart Parking</h2>
+                    <p>System Dashboard</p>
+                </div>
+            </div>
+
+            <div class="user-session">
+                <div class="avatar">SS</div>
+                <div class="user-info">
+                    <h4>Sharmila Shikder</h4>
+                    <p>Active User</p>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="find-parking.html">Find Parking</a></li>
+                <li><a href="my-reservations.html">My Reservations</a></li>
+                <li><a href="parking-history.html">Parking History</a></li>
+                <li><a href="report-issue.html">Report Issue</a></li>
+                <li><a href="chat.html" class="active">Chat with Manager</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="../admin/index.html" class="logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content">
+        <div class="header-section">
+            <h1>Chat with Manager</h1>
+            <p class="subtitle">Connect directly with parking facility managers</p>
+        </div>
+
+        <h2 class="section-title">Managers List</h2>
+        <ul class="manager-list">
+            <li><strong>Prityonti Roy</strong> - Mirpur Parking <span class="status-badge online">Online</span></li>
+            <li><strong>Shamsil Arefin</strong> - Motijheel Parking <span class="status-badge offline">Offline</span></li>
+        </ul>
+
+        <h2 class="section-title">Chat with Prityonti Roy (Mirpur Parking)</h2>
+        <div class="chat-container">
+            <div class="chat-messages">
+                <p class="message user-msg"><strong>You:</strong> Prityonti Roy, is space A-14 available tomorrow morning?</p>
+                <p class="message manager-msg"><strong>Prityonti Roy:</strong> Hi Sharmila! Yes, A-14 is free tomorrow 8am–2pm.</p>
+                <p class="message user-msg"><strong>You:</strong> Great, I will reserve it now. Thanks!</p>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" placeholder="Type a message...">
+                <button type="button">Send</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/session.js"></script>
+    <script src="../js/driver.js"></script>
+</body>
+</html>

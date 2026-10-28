@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkSmart - Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-top">
+            <div class="logo-area">
+                <div class="logo-icon">P</div>
+                <div class="logo-text">
+                    <h2>Smart Parking</h2>
+                    <p>Management System</p>
+                </div>
+            </div>
+            
+            <div class="user-session">
+                <div class="avatar">S</div>
+                <div class="user-info">
+                    <h4>Sharmila Shikder</h4>
+                    <p>Active session</p>
+                </div>
+            </div>
+            
+            <hr style="border: none; height: 1px; background-color: #e9edf7; margin: 16px 0;">
+            
+            <h2 style="font-size: 12px; text-transform: uppercase; color: #a3aed0; margin-bottom: 10px;">Navigation</h2>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="find-parking.html">Find Parking</a></li>
+                <li><a href="my-reservations.html">My Reservations</a></li>
+                <li><a href="parking-history.html">Parking History</a></li>
+                <li><a href="report-issue.html">Report Issue</a></li>
+                <li><a href="chat.html">Chat with Manager</a></li>
+            </ul>
+        </div>
+        
+        <div class="sidebar-bottom">
+            <a href="../admin/index.html" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <div class="header-section" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+                <h1>Dashboard</h1>
+                <p class="subtitle">Welcome back, here is your parking overview.</p>
+            </div>
+            <div>
+                <button id="driverNotifBtn" class="notif-btn" style="position:relative; background:#fff; border:1px solid #cbd5e0; padding:8px 16px; border-radius:10px; font-weight:600; font-size:13px; color:#2d3748; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+                    <span>🔔 Notifications</span>
+                    <span id="notifBadgeCount" style="display:none; background:#e53e3e; color:#fff; font-size:11px; font-weight:700; border-radius:12px; padding:1px 6px;">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Active Reservation Section -->
+        <h2 class="section-title">Active Reservation</h2>
+        <div class="active-card">
+            <div class="active-header">
+                <h3>Current Booking</h3>
+                <span class="badge">Active</span>
+            </div>
+            <div class="active-body">
+                <div class="parking-info">
+                    <h2>Mirpur Parking — Space A-14</h2>
+                    <div class="time-info">Time: 09:00 AM – 12:00 PM · Today, Jul 15</div>
+                </div>
+                <div class="otp-box">
+                    <span class="otp-label">OTP Code</span>
+                    <span class="otp-code">7842</span>
+                </div>
+            </div>
+            <div class="active-footer">
+                <div>Time Left: <strong>1h 24m</strong></div>
+                <div>Amount: <strong>৳900</strong></div>
+            </div>
+        </div>
+
+        <!-- Quick Statistics Section -->
+        <h2 class="section-title">Quick Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-title">Total Reservations</span>
+                <span class="stat-value">28</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Hours Parked</span>
+                <span class="stat-value">84h</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Locations Used</span>
+                <span class="stat-value">4</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Avg. Rating Given</span>
+                <span class="stat-value rating-val">4.8 ★</span>
+            </div>
+        </div>
+
+        <!-- Recent Activity Section -->
+        <h2 class="section-title">Recent Activity</h2>
+        <div class="activity-card">
+            <ul class="activity-list">
+                <li>
+                    <span class="bullet active-bullet"></span>
+                    <div>
+                        <p>Checked in - Mirpur · A-14</p>
+                        <span class="activity-time">Today, 9:00 AM</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="bullet"></span>
+                    <div>
+                        <p>Reserved - Mirpur · A-14</p>
+                        <span class="activity-time">Yesterday, 11:22 PM</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="bullet"></span>
+                    <div>
+                        <p>Checked out - Motijheel · B-07</p>
+                        <span class="activity-time">Jul 12, 6:00 PM</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="bullet"></span>
+                    <div>
+                        <p>Receipt downloaded - Motijheel · B-07</p>
+                        <span class="activity-time">Jul 12, 6:02 PM</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="../js/session.js"></script>
+    <script src="../js/driver.js"></script>
+</body>
+</html>

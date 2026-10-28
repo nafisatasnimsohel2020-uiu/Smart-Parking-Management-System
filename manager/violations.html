@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ParkSmart - Violations</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="manager-base.css">
+  <link rel="stylesheet" href="violations.css">
+  <style>
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+    .modal-overlay.hidden { display: none; }
+    .modal-box { background: white; border-radius: 8px; width: 90%; max-width: 460px; padding: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    .form-row { margin-bottom: 14px; }
+    .form-row label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #4a5568; }
+    .form-row input, .form-row select, .form-row textarea { width: 100%; padding: 8px 12px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 14px; box-sizing: border-box; }
+    .modal-btns { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-area">
+        <div class="logo-icon"></div>
+         <div class="logo-text"><h2>Smart Parking</h2><p>Management System</p></div>
+      </div>
+      <div class="user-session">
+        <div class="avatar">S</div>
+        <div class="user-info"><h4>Shamsil Arefin</h4><p>Active session</p></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="spacemap.html">Space Map</a></li>
+        <li><a href="reservations-all.html">Reservations</a></li>
+        <li><a href="checkin.html">Check-In / Out</a></li>
+        <li class="active"><a href="violations.html">Violations</a></li>
+        <li><a href="reports.html">Area Reports</a></li>
+        <li><a href="chat.html">Driver Chat</a></li>
+      </ul>
+   </div>
+    <div class="sidebar-bottom"><a href="../admin/index.html" class="logout-btn">Logout</a></div>
+  </div>
+
+  <div class="main-content">
+    <div class="top-navbar">
+      <h3>Violations</h3>
+      <div class="profile-pill"><div class="avatar">S</div> Shamsil Arefin</div>
+    </div>
+    <div class="page-body">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+        <div class="page-header-sub" style="margin-bottom: 0;">
+          <h1>Parking Violations</h1>
+          <p>Review, report and resolve violations in your area</p>
+        </div>
+        <button class="btn-primary" id="reportViolationBtn" style="background:#319795;">+ Report Violation</button>
+      </div>
+
+      <div id="violationsList"></div>
+    </div>
+  </div>
+
+  <!-- Report Violation Modal -->
+  <div id="violationModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <h3 style="margin-top:0; margin-bottom:16px;">Report Parking Violation</h3>
+      <form id="violationForm">
+        <div class="form-row">
+          <label>Parking Facility</label>
+          <select id="vioLocationSelect" required></select>
+        </div>
+        <div class="form-row">
+          <label>Violation Category</label>
+          <select id="vioCategorySelect" required></select>
+        </div>
+        <div class="form-row">
+          <label>Vehicle Plate (optional)</label>
+          <input type="text" id="vioPlate" placeholder="e.g. DHA-METRO-GA-1122">
+        </div>
+        <div class="form-row">
+          <label>Violation Description</label>
+          <textarea id="vioDescription" rows="3" placeholder="Describe the violation..." required></textarea>
+        </div>
+        <div class="modal-btns">
+          <button type="button" id="closeVioModalBtn" class="btn-primary" style="background:#edf2f7; color:#4a5568;">Cancel</button>
+          <button type="submit" class="btn-primary" style="background:#e53e3e;">Submit Violation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/session.js"></script>
+  <script src="../js/manager.js"></script>
+</body>
+</html>

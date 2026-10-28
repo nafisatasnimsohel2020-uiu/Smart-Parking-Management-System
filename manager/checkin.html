@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ParkSmart - Check-In / Out</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="manager-base.css">
+  <link rel="stylesheet" href="checkin.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-area">
+        <div class="logo-icon"></div>
+         <div class="logo-text"><h2>Smart Parking</h2><p>Management System</p></div>
+      </div>
+      <div class="user-session">
+        <div class="avatar">S</div>
+        <div class="user-info"><h4>Shamsil Arefin</h4><p>Active session</p></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="spacemap.html">Space Map</a></li>
+        <li><a href="reservations-all.html">Reservations</a></li>
+        <li class="active"><a href="checkin.html">Check-In / Out</a></li>
+        <li><a href="violations.html">Violations</a></li>
+        <li><a href="reports.html">Area Reports</a></li>
+        <li><a href="chat.html">Driver Chat</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-bottom"><a href="../admin/index.html" class="logout-btn">Logout</a></div>
+  </div>
+
+  <div class="main-content">
+    <div class="top-navbar">
+      <h3>Check-In / Check-Out</h3>
+      <div class="profile-pill"><div class="avatar">S</div> Shamsil Arefin</div>
+    </div>
+    <div class="page-body">
+      <div class="page-header-sub">
+        <h1>Check-In / Check-Out</h1>
+        <p>OTP-based vehicle verification for arrivals and departures</p>
+      </div>
+
+      <!-- Quick Search / Instant OTP Verification Box -->
+      <div class="data-table-container" style="margin-bottom: 25px; background: #fff;">
+        <h4 style="margin-bottom: 12px; font-size: 14px;">Instant OTP Verification (Check-In or Check-Out)</h4>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <input type="text" id="quickBookingCode" class="search-input" placeholder="Enter Booking ID (e.g. R-4821)" style="flex: 1; min-width: 180px;">
+          <input type="text" id="quickOtpCode" class="search-input" placeholder="4-digit OTP" style="width: 130px;" maxlength="6">
+          <button id="quickCheckinBtn" class="btn-primary" style="background:#319795;">Verify Check-In</button>
+          <button id="quickCheckoutBtn" class="btn-primary" style="background:#805ad5;">Verify Check-Out</button>
+        </div>
+      </div>
+
+      <!-- Pending Check-ins section -->
+      <h3 style="font-size: 16px; margin-bottom: 12px; color: #2d3748;">Pending Check-Ins (Awaiting Arrival)</h3>
+      <div id="pendingCheckinsList" style="margin-bottom: 30px;"></div>
+
+      <!-- Active Check-outs section -->
+      <h3 style="font-size: 16px; margin-bottom: 12px; color: #2d3748;">Active Parked Vehicles (Ready for Check-Out)</h3>
+      <div id="activeCheckoutsList"></div>
+    </div>
+  </div>
+  <script src="../js/session.js"></script>
+  <script src="../js/manager.js"></script>
+</body>
+</html>

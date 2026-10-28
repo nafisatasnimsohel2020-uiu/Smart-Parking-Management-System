@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParkSmart - Manager Overview</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="manager-base.css">
+  <link rel="stylesheet" href="overview.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-area">
+        <div class="logo-icon"></div>
+        <div class="logo-text"><h2>Smart Parking</h2><p>Management System</p></div>
+      </div>
+      <div class="user-session">
+        <div class="avatar" id="sidebarAvatar">M</div>
+        <div class="user-info"><h4 id="sidebarManagerName">Facility Manager</h4><p>Active session</p></div>
+      </div>
+      <ul class="nav-links">
+        <li class="active"><a href="index.html">Overview</a></li>
+        <li><a href="spacemap.html">Space Map</a></li>
+        <li><a href="reservations-all.html">Reservations</a></li>
+        <li><a href="checkin.html">Check-In / Out</a></li>
+        <li><a href="violations.html">Violations</a></li>
+        <li><a href="reports.html">Area Reports</a></li>
+        <li><a href="chat.html">Driver Chat</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-bottom"><a href="../admin/index.html" class="logout-btn">Logout</a></div>
+  </div>
+
+  <div class="main-content">
+    <div class="top-navbar">
+      <h3>Facility Overview</h3>
+      <div class="profile-pill"><div class="avatar" id="navAvatar">M</div> <span id="navManagerName">Facility Manager</span></div>
+    </div>
+
+    <div class="page-body">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 22px; flex-wrap: wrap; gap: 12px;">
+        <div class="page-header-sub" style="margin-bottom: 0;">
+          <h1 id="facilityTitle">Parking Facility</h1>
+          <p id="facilitySubtitle">Live operations & facility overview</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: inline-flex; align-items: center; gap: 6px; background: #c6f6d5; color: #22543d; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 20px;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: #38a169; display: inline-block;"></span>
+            LIVE OPERATIONS
+          </span>
+          <button id="refreshOverviewBtn" class="action-btn-sm btn-detail" style="padding: 6px 12px; font-size: 12px;" title="Refresh Dashboard">↻ Refresh</button>
+        </div>
+      </div>
+
+      <!-- 6 Key Facility Metrics -->
+      <div class="stats-grid-6">
+        <div class="stat-card stat-avail">
+          <span class="stat-label">Available Spaces</span>
+          <h2 id="statAvailableSpaces">--<span style="font-size: 14px; color:#718096">/--</span></h2>
+          <p class="stat-desc" id="statFreePct">--% capacity free</p>
+        </div>
+        <div class="stat-card stat-active">
+          <span class="stat-label">Active Trips</span>
+          <h2 id="statActiveTrips">--</h2>
+          <p class="stat-desc">Parked now in facility</p>
+        </div>
+        <div class="stat-card stat-booked">
+          <span class="stat-label">Booked Trips</span>
+          <h2 id="statBookedTrips">--</h2>
+          <p class="stat-desc">Reserved, awaiting check-in</p>
+        </div>
+        <div class="stat-card stat-upcoming">
+          <span class="stat-label">Upcoming Trips</span>
+          <h2 id="statUpcomingTrips">--</h2>
+          <p class="stat-desc">Future scheduled slots</p>
+        </div>
+        <div class="stat-card stat-complete">
+          <span class="stat-label">Completed Trips</span>
+          <h2 id="statCompletedTrips">--</h2>
+          <p class="stat-desc">Total completed trips</p>
+        </div>
+        <div class="stat-card stat-revenue">
+          <span class="stat-label">Today's Revenue</span>
+          <h2 id="statTodayRevenue">৳0</h2>
+          <p class="stat-desc" id="statTotalRevDesc">Total: ৳0</p>
+        </div>
+      </div>
+
+      <!-- Active Overtime Monitor -->
+      <div class="data-table-container" id="activeOvertimePanel" style="margin-bottom: 25px; border-left: 4px solid #e53e3e;">
+        <div class="table-header-row" style="margin-bottom: 12px;">
+          <div>
+            <h3 style="font-size: 15px; font-weight: 700; color:#2d3748; margin:0;">Active Overtime</h3>
+            <p style="font-size:12px; color:#718096; margin:4px 0 0;">Drivers who have exceeded their scheduled parking end time and are still checked in.</p>
+          </div>
+          <span id="activeOvertimeCount" style="background:#fff5f5; color:#c53030; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700;">0 Active Overtime</span>
+        </div>
+        <div id="activeOvertimeList" style="display:grid; gap:10px;">
+          <div style="padding:15px; text-align:center; color:#718096; font-size:12px;">No active overtime.</div>
+        </div>
+      </div>
+
+      <!-- Operational Insights: Space Occupancy + Financial Summary -->
+      <div class="insights-grid">
+        <!-- Space Occupancy Bar -->
+        <div class="insight-card">
+          <div class="insight-card-header">
+            <h3>Facility Occupancy</h3>
+            <span id="occupancyRateText">0% Occupied</span>
+          </div>
+          <div class="occupancy-bar-track" id="occupancyBarContainer">
+            <div class="occupancy-segment occ-occupied" style="width: 0%;" id="barOccupied" title="Occupied"></div>
+            <div class="occupancy-segment occ-reserved" style="width: 0%;" id="barReserved" title="Reserved/Booked"></div>
+            <div class="occupancy-segment occ-free" style="width: 100%;" id="barFree" title="Free"></div>
+          </div>
+          <div class="occupancy-legend">
+            <div class="legend-item"><span class="legend-dot" style="background:#e53e3e;"></span> <span id="legendOccupied">Occupied: 0</span></div>
+            <div class="legend-item"><span class="legend-dot" style="background:#ecc94b;"></span> <span id="legendReserved">Booked: 0</span></div>
+            <div class="legend-item"><span class="legend-dot" style="background:#38a169;"></span> <span id="legendFree">Available: 0</span></div>
+          </div>
+        </div>
+
+        <!-- Payment & Collections Summary -->
+        <div class="insight-card">
+          <div class="insight-card-header">
+            <h3>Payment Channels</h3>
+            <span id="finesSummaryText" style="color: #e53e3e; font-weight: 600;">Fines: ৳0</span>
+          </div>
+          <div class="payment-grid">
+            <div class="payment-box">
+              <div class="payment-box-title"><span style="color:#d81b60;">●</span> bKash</div>
+              <div class="payment-box-amt" id="payBkash">৳0</div>
+            </div>
+            <div class="payment-box">
+              <div class="payment-box-title"><span style="color:#e65100;">●</span> Nagad</div>
+              <div class="payment-box-amt" id="payNagad">৳0</div>
+            </div>
+            <div class="payment-box">
+              <div class="payment-box-title"><span style="color:#1976d2;">●</span> Card</div>
+              <div class="payment-box-amt" id="payCard">৳0</div>
+            </div>
+            <div class="payment-box">
+              <div class="payment-box-title"><span style="color:#2e7d32;">●</span> Cash / Arrival</div>
+              <div class="payment-box-amt" id="payCash">৳0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Facility Reservations & Trip Management Table -->
+      <div class="data-table-container">
+        <div class="table-header-row" style="flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h3 style="font-size: 15px; font-weight: 700; color: #2d3748; margin-bottom: 4px;">Facility Reservations & Trips</h3>
+            <p style="font-size: 12px; color: #718096; margin: 0;">Live trip statuses, payment details, and check-in actions</p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <input type="text" id="overviewSearchInput" class="search-input" placeholder="Search by booking code, driver, space, plate..." style="width: 260px;">
+            <div class="filter-tabs" id="statusFilterTabs">
+              <button class="filter-tab-btn active" data-filter="all">All</button>
+              <button class="filter-tab-btn" data-filter="booked">Booked</button>
+              <button class="filter-tab-btn" data-filter="active">Active</button>
+              <button class="filter-tab-btn" data-filter="complete">Complete</button>
+              <button class="filter-tab-btn" data-filter="upcoming">Upcoming</button>
+              <button class="filter-tab-btn" data-filter="cancelled">Cancelled</button>
+            </div>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Booking ID</th>
+              <th>Driver</th>
+              <th>Plate</th>
+              <th>Space</th>
+              <th>Date & Time</th>
+              <th>Payment</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="todayReservationsBody">
+            <tr><td colspan="9" style="text-align:center; padding: 25px; color:#718096;">Loading live facility reservations...</td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 15px;">
+          <p id="tableCountText" style="font-size: 12px; color: #a0aec0; margin: 0;">Showing 0 reservations</p>
+          <a href="reservations-all.html" style="font-size: 12px; color: #319795; font-weight: 600; text-decoration: none;">View All Reservations &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking & Payment Details Modal -->
+  <div id="overviewBookingModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.6); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:#ffffff; width:520px; max-width:92%; border-radius:14px; padding:24px; box-shadow:0 20px 45px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom: 1px solid #edf2f7; padding-bottom: 12px;">
+        <div>
+          <h3 id="modalBookingCode" style="margin:0; font-size:18px; color:#1a202c; font-weight: 700;">Booking Details</h3>
+          <p id="modalBookingSub" style="margin:2px 0 0 0; font-size:12px; color:#718096;">Facility Trip Record</p>
+        </div>
+        <button id="closeBookingModalBtn" style="background:none; border:none; font-size:24px; cursor:pointer; color:#718096; line-height:1;">&times;</button>
+      </div>
+
+      <div id="modalBookingBody">
+        <!-- Dynamically injected details -->
+      </div>
+
+      <div id="modalBookingActions" style="display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; border-top:1px solid #edf2f7; padding-top:16px; margin-top: 16px;">
+        <button id="closeBookingModalActionBtn" class="action-btn-sm btn-detail" style="padding: 8px 16px; font-size: 13px;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/session.js"></script>
+  <script src="../js/manager.js"></script>
+</body>
+</html>

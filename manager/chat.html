@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ParkSmart - Driver Chat</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="manager-base.css">
+  <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-area">
+        <div class="logo-icon"></div>
+         <div class="logo-text"><h2>Smart Parking</h2><p>Management System</p></div>
+      </div>
+      <div class="user-session">
+        <div class="avatar">S</div>
+        <div class="user-info"><h4>Shamsil Arefin</h4><p>Active session</p></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="spacemap.html">Space Map</a></li>
+        <li><a href="reservations-all.html">Reservations</a></li>
+        <li><a href="checkin.html">Check-In / Out</a></li>
+        <li><a href="violations.html">Violations</a></li>
+        <li><a href="reports.html">Area Reports</a></li>
+        <li class="active"><a href="chat.html">Driver Chat</a></li>
+      </ul>
+     </div>
+    <div class="sidebar-bottom"><a href="../admin/index.html" class="logout-btn">Logout</a></div>
+  </div>
+
+  <div class="main-content">
+    <div class="top-navbar">
+      <h3>Driver Chat</h3>
+      <div class="profile-pill"><div class="avatar">S</div> Shamsil Arefin</div>
+    </div>
+    <div class="page-body">
+      <div class="page-header-sub">
+        <h1>Driver Support Chat</h1>
+        <p>Communicate directly with drivers in real-time</p>
+      </div>
+
+      <div class="data-table-container" style="display: flex; height: 520px; padding: 0; overflow: hidden; border: 1px solid #e2e8f0; border-radius: 8px;">
+        <!-- Left: Active Drivers List -->
+        <div style="width: 320px; border-right: 1px solid #edf2f7; background: #f8fafc; display: flex; flex-direction: column;">
+          <div style="padding: 15px; border-bottom: 1px solid #edf2f7; font-weight: 600; font-size: 13px; color: #4a5568;">
+            Active Driver Conversations
+          </div>
+          <div id="managerChatContactsList" style="flex: 1; overflow-y: auto;">
+            <!-- Contacts loaded dynamically by manager.js -->
+          </div>
+        </div>
+
+        <!-- Right: Chat Box -->
+        <div style="flex: 1; display: flex; flex-direction: column; background: #fff;">
+          <div id="managerChatHeader" style="padding: 15px; border-bottom: 1px solid #edf2f7; font-weight: 600; font-size: 14px; background: #fafafa;">
+            Select a driver to start conversation
+          </div>
+          <div id="managerChatMessages" style="flex: 1; padding: 20px; overflow-y: auto; background: #fff; display: flex; flex-direction: column; gap: 12px;">
+            <!-- Messages loaded dynamically by manager.js -->
+          </div>
+          <div style="padding: 15px; border-top: 1px solid #edf2f7; display: flex; gap: 10px; background: #f8fafc;">
+            <input type="text" id="managerChatInput" class="search-input" placeholder="Type a message to driver..." style="flex: 1;">
+            <button id="managerChatSendBtn" class="btn-primary" style="background:#319795; padding: 8px 20px;">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/session.js"></script>
+  <script src="../js/manager.js"></script>
+</body>
+</html>

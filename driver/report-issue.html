@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Issue - Smart Parking System</title>
+    <link rel="stylesheet" href="report-issue.css">
+</head>
+<body>
+
+    <!-- Sidebar Layout -->
+    <aside class="sidebar">
+        <div>
+            <div class="logo-area">
+                <div class="logo-icon">P</div>
+                <div class="logo-text">
+                    <h2>Smart Parking</h2>
+                    <p>System Dashboard</p>
+                </div>
+            </div>
+
+            <div class="user-session">
+                <div class="avatar">SS</div>
+                <div class="user-info">
+                    <h4>Sharmila Shikder</h4>
+                    <p>Active User</p>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="find-parking.html">Find Parking</a></li>
+                <li><a href="my-reservations.html">My Reservations</a></li>
+                <li><a href="parking-history.html">Parking History</a></li>
+                <li><a href="report-issue.html" class="active">Report Issue</a></li>
+                <li><a href="chat.html">Chat with Manager</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="../admin/index.html" class="logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content">
+        <div class="header-section">
+            <h1>Report Issue</h1>
+            <p class="subtitle">Submit and track parking issues or disputes</p>
+        </div>
+
+        <h2 class="section-title">Submit a Report</h2>
+        <form class="report-form" id="reportForm">
+            <div class="form-group">
+                <label>Issue Category</label>
+                <select id="reportCategory">
+                    <option value="">Select category</option>
+                    <option>Space not free on arrival</option>
+                    <option>Unable to check out via app</option>
+                    <option>Unauthorized vehicle in space</option>
+                    <option>Payment or billing discrepancy</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Location</label>
+                <select id="reportLocationId">
+                    <option value="">Select location</option>
+                    <option>Mirpur Parking</option>
+                    <option>Motijheel Parking</option>
+                    <option>Dhanmondi Parking</option>
+                    <option>Gulshan Parking</option>
+                    <option>UIU Campus Smart Parking</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Booking ID (optional)</label>
+                <input type="text" id="reportBookingCode" placeholder="e.g. R-4821">
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="reportDescription" placeholder="Describe the issue in detail..."></textarea>
+            </div>
+
+            <button type="submit" id="reportSubmitBtn">Submit Report</button>
+        </form>
+
+        <h2 class="section-title">My Reports</h2>
+        <div class="reports-list" id="reportsList">
+            <div class="report-card">
+                <div class="report-header">
+                    <strong>IR-0041</strong>
+                    <span class="status-badge resolved">Resolved</span>
+                </div>
+                <p class="report-desc">Space not free on arrival</p>
+                <div class="report-footer">
+                    <span>Motijheel Parking · B-15</span>
+                    <span class="report-date">Jul 5, 2025</span>
+                </div>
+            </div>
+
+            <div class="report-card">
+                <div class="report-header">
+                    <strong>IR-0038</strong>
+                    <span class="status-badge review">Under Review</span>
+                </div>
+                <p class="report-desc">Unable to check out via app</p>
+                <div class="report-footer">
+                    <span>Mirpur Parking · A-07</span>
+                    <span class="report-date">Jul 8, 2025</span>
+                </div>
+            </div>
+        </div>
+    </main>
+<script src="../js/session.js"></script>
+<script src="../js/driver.js"></script>
+</body>
+</html>

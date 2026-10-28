@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reservations - Smart Parking System</title>
+    <link rel="stylesheet" href="my-reservations.css">
+</head>
+<body>
+
+    <!-- Sidebar Layout -->
+    <aside class="sidebar">
+        <div>
+            <div class="logo-area">
+                <div class="logo-icon">P</div>
+                <div class="logo-text">
+                    <h2>Smart Parking</h2>
+                    <p>System Dashboard</p>
+                </div>
+            </div>
+
+            <div class="user-session">
+                <div class="avatar" id="sidebarDriverAvatar">D</div>
+                <div class="user-info">
+                    <h4 id="sidebarDriverName">Driver</h4>
+                    <p>Active User</p>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="find-parking.html">Find Parking</a></li>
+                <li><a href="my-reservations.html" class="active">My Reservations</a></li>
+                <li><a href="parking-history.html">Parking History</a></li>
+                <li><a href="report-issue.html">Report Issue</a></li>
+                <li><a href="chat.html">Chat with Manager</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="../admin/index.html" class="logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content">
+        <div class="header-section" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+                <h1>My Reservations</h1>
+                <p class="subtitle">Track your live trip, booked spots, future reservations, and past parking history</p>
+            </div>
+            <div>
+                <button id="driverNotifBtn" class="notif-btn" style="position:relative; background:#fff; border:1px solid #cbd5e0; padding:8px 16px; border-radius:10px; font-weight:600; font-size:13px; color:#2d3748; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+                    <span>🔔 Notifications</span>
+                    <span id="notifBadgeCount" style="display:none; background:#e53e3e; color:#fff; font-size:11px; font-weight:700; border-radius:12px; padding:1px 6px;">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter Tabs & Search Controls -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom: 20px;">
+            <div class="filter-tabs" id="myReservationTabs">
+                <button class="filter-tab-btn active" data-status="all">All <span class="tab-count" id="countAll">0</span></button>
+                <button class="filter-tab-btn" data-status="active">Active <span class="tab-count" id="countActive">0</span></button>
+                <button class="filter-tab-btn" data-status="booked">Booked <span class="tab-count" id="countBooked">0</span></button>
+                <button class="filter-tab-btn" data-status="upcoming">Upcoming <span class="tab-count" id="countUpcoming">0</span></button>
+                <button class="filter-tab-btn" data-status="complete">Complete <span class="tab-count" id="countComplete">0</span></button>
+                <button class="filter-tab-btn" data-status="cancelled">Cancelled <span class="tab-count" id="countCancelled">0</span></button>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                <input type="text" id="myResSearchInput" placeholder="Search by ID, spot, plate, payment..." style="padding:8px 14px; border:1px solid #cbd5e0; border-radius:10px; font-size:13px; width:240px; background:#fff;">
+                <a href="find-parking.html" style="padding:8px 16px; background:#4318ff; color:#fff; text-decoration:none; border-radius:10px; font-size:13px; font-weight:600; white-space:nowrap;">+ Reserve Spot</a>
+            </div>
+        </div>
+
+        <div class="reservations-list" id="reservationsList">
+            <div style="padding: 40px 20px; text-align:center; background:#fff; border-radius:16px; border:1px solid #e9edf7; color:#707ebe;">
+                <p style="font-size:14px; margin:0;">Loading your reservations...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cancellation Confirmation Modal with Fine Notice -->
+    <div id="cancelModalOverlay" class="modal-overlay hidden" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+        <div class="modal-content" style="background:#fff; border-radius:12px; padding:24px; max-width:440px; width:90%; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h3 style="margin:0; color:#e53e3e; display:flex; align-items:center; gap:8px;">
+                    ⚠️ Cancel Reservation
+                </h3>
+                <span id="closeCancelModalBtn" style="cursor:pointer; font-size:20px; color:#a0aec0;">&times;</span>
+            </div>
+            
+            <p style="font-size:13px; color:#4a5568; margin-bottom:16px;">
+                Are you sure you want to cancel booking <strong id="cancelModalCode">R-XXXX</strong>?
+            </p>
+
+            <div style="background:#fff5f5; border:1px solid #fed7d7; border-radius:8px; padding:14px; margin-bottom:16px;">
+                <h4 style="font-size:12px; color:#9b2c2c; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Cancellation Fine Policy</h4>
+                <div style="display:flex; justify-content:space-between; font-size:13px; color:#4a5568; margin-bottom:4px;">
+                    <span>Original Booking Total:</span>
+                    <strong id="cancelModalTotal">৳0.00</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; color:#e53e3e; margin-bottom:6px;">
+                    <span>Cancellation Fine (20% penalty fee):</span>
+                    <strong id="cancelModalFine">-৳0.00</strong>
+                </div>
+                <div style="border-top:1px dashed #feb2b2; padding-top:6px; display:flex; justify-content:space-between; font-size:14px; font-weight:700; color:#22543d;">
+                    <span>Net Refund Amount:</span>
+                    <span id="cancelModalRefund">৳0.00</span>
+                </div>
+                <p style="font-size:11px; color:#718096; margin-top:8px; margin-bottom:0;">
+                    Refund will be credited back via <span id="cancelModalPaymentMethod">bKash</span>.
+                </p>
+            </div>
+
+            <div style="margin-bottom:18px;">
+                <label style="display:block; font-size:12px; font-weight:600; color:#4a5568; margin-bottom:6px;">Reason for Cancellation (Optional)</label>
+                <input type="text" id="cancelReasonInput" placeholder="e.g. Change of plans, vehicle issue" style="width:100%; padding:10px 12px; border:1px solid #cbd5e0; border-radius:8px; font-size:13px;">
+            </div>
+
+            <div style="display:flex; gap:10px; justify-content:flex-end;">
+                <button id="cancelModalKeepBtn" style="padding:10px 18px; border:1px solid #cbd5e0; background:#edf2f7; color:#4a5568; border-radius:6px; font-weight:600; cursor:pointer;">Keep Reservation</button>
+                <button id="cancelModalConfirmBtn" style="padding:10px 18px; border:none; background:#e53e3e; color:#fff; border-radius:6px; font-weight:600; cursor:pointer;">Confirm Cancellation</button>
+            </div>
+        </div>
+    </div>
+<script src="../js/session.js"></script>
+<script src="../js/driver.js"></script>
+</body>
+</html>

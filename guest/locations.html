@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Locations &amp; Pricing Directory - Smart Parking</title>
+  <link rel="stylesheet" href="html.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div>
+      <div class="logo-area">
+        <div class="logo-icon">P</div>
+        <div class="logo-text">
+          <h2>Smart Parking</h2>
+          <p>Guest Access</p>
+        </div>
+      </div>
+      <div class="user-session">
+  <div class="user-info">
+    <p><strong>Guest Account</strong></p>
+    <span class="badge badge-success" style="font-size: 0.75rem;">Public Mode</span>
+  </div>
+  <div class="avatar">GA</div>
+</div>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="parking.html">Parking Details</a></li>
+        <li><a href="locations.html" class="active">Locations &amp; Pricing</a></li>
+        <li><a href="contact support.html">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-bottom"><a href="../admin/index.html" class="logout-btn">Logout</a></div>
+  </aside>
+
+  <main class="main-content">
+    <div class="header-section">
+      <div>
+        <h1>Dhaka Parking Zone Directory</h1>
+        <p class="subtitle">Find parking zones by amenities, vehicle support, and membership plans.</p>
+      </div>
+    </div>
+
+    <!-- Interactive Area Coverage & Filters -->
+    <div class="card mb-32">
+      <h2>Interactive Area Coverage</h2>
+      <p class="subtitle mb-16">Filter zones by amenities and view coverage across Dhaka</p>
+
+      <!-- Live Google Map Embed -->
+      <div class="mb-16" style="border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color);">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116834.00977782115!2d90.34924164335938!3d23.780887450000003!2m3!1f0!0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd" 
+          width="100%" 
+          height="260" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="pill-group">
+        <button class="btn btn-pill active" onclick="filterZones('all', this)">All Locations</button>
+        <button class="btn btn-pill" onclick="filterZones('ev', this)">⚡ EV Charging Available</button>
+        <button class="btn btn-pill" onclick="filterZones('bike', this)">🏍️ Bike Friendly</button>
+        <button class="btn btn-pill" onclick="filterZones('247', this)">🕒 24/7 Open</button>
+      </div>
+    </div>
+
+    <!-- Filterable Directory Table -->
+    <div class="table-container mb-32">
+      <table>
+        <thead>
+          <tr>
+            <th>Zone &amp; Address</th>
+            <th>Hourly / Daily Rate</th>
+            <th>Supported Vehicles</th>
+            <th>Special Amenities</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="zones-table-body">
+          <tr data-ev="true" data-bike="true" data-247="true">
+            <td>
+              <strong>City Center Parking</strong><br>
+              <small style="color: var(--text-muted);">123 Main Street, Motijheel</small>
+            </td>
+            <td>
+              <strong>৳ 200</strong> / hr<br>
+              <small style="color: var(--text-muted);">Daily Max: ৳ 1,200</small>
+            </td>
+            <td>🚗 Sedan, SUV, 🏍️ Bike</td>
+            <td><span class="status-badge paid">⚡ EV Charger</span> <span class="status-badge paid">🎥 CCTV</span></td>
+            <td>
+              <a href="parking.html#city-center" class="btn btn-sm">Book Spot &rarr;</a>
+            </td>
+          </tr>
+          <tr data-ev="false" data-bike="false" data-247="true">
+            <td>
+              <strong>Airport Parking Hub</strong><br>
+              <small style="color: var(--text-muted);">Airport Road, Uttara</small>
+            </td>
+            <td>
+              <strong>৳ 300</strong> / hr<br>
+              <small style="color: var(--text-muted);">Daily Max: ৳ 2,000</small>
+            </td>
+            <td>🚗 All Cars, 🚌 Microbus</td>
+            <td><span class="status-badge paid">🧳 Luggage Cart</span> <span class="status-badge paid">🛠️ Valet</span></td>
+            <td>
+              <a href="parking.html#airport" class="btn btn-sm">Book Spot &rarr;</a>
+            </td>
+          </tr>
+          <tr data-ev="false" data-bike="true" data-247="false">
+            <td>
+              <strong>Mall of Dhaka</strong><br>
+              <small style="color: var(--text-muted);">Mirpur Road, Dhanmondi</small>
+            </td>
+            <td>
+              <strong>৳ 150</strong> / hr<br>
+              <small style="color: var(--text-muted);">Daily Max: ৳ 1,000</small>
+            </td>
+            <td>🚗 Sedan, 🏍️ Bike</td>
+            <td><span class="status-badge paid">🚿 Car Wash</span> <span class="status-badge paid">🛍️ Mall Entry</span></td>
+            <td>
+              <a href="parking.html#mall-of-dhaka" class="btn btn-sm">Book Spot &rarr;</a>
+            </td>
+          </tr>
+          <tr data-ev="true" data-bike="true" data-247="false">
+            <td>
+              <strong>Uttara Sector 7 Zone</strong><br>
+              <small style="color: var(--text-muted);">Sector 7 Main Road</small>
+            </td>
+            <td>
+              <strong>৳ 100</strong> / hr<br>
+              <small style="color: var(--text-muted);">Daily Max: ৳ 600</small>
+            </td>
+            <td>🚗 Sedan, 🏍️ Bike</td>
+            <td><span class="status-badge paid">⚡ EV Charger</span> <span class="status-badge paid">🎥 24/7 Security</span></td>
+            <td>
+              <a href="parking.html#uttara" class="btn btn-sm">Book Spot &rarr;</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Long-Term Subscriptions -->
+    <div class="card mb-32" style="background: transparent; border: none; padding: 0; box-shadow: none;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 4px;">Long-Term Parking Pass &amp; Subscription</h2>
+      <p class="subtitle mb-24">Save money and enjoy priority parking access with monthly smart passes</p>
+
+      <div class="pricing-grid">
+        <!-- Regular Commuter Plan -->
+        <div class="plan-card standard">
+          <div class="saver-badge">💼 Daily Saver</div>
+          <div>
+            <h3 class="plan-title">Regular Commuter Pass</h3>
+            <p class="subtitle">Ideal for daily office commuters</p>
+            <div class="plan-price">৳ 5,000 <span>/ month</span></div>
+            <ul class="plan-features">
+              <li><span class="check-blue">✓</span> <strong>Guaranteed Spot</strong> (Mon – Fri, 8 AM – 8 PM)</li>
+              <li><span class="check-blue">✓</span> Dedicated primary parking zone</li>
+              <li><span class="check-blue">✓</span> Automatic RFID barrier gate access</li>
+              <li><span class="check-blue">✓</span> Save up to 20% compared to hourly rates</li>
+            </ul>
+          </div>
+          <a href="contact support.html" class="btn btn-md btn-secondary btn-full" style="border-color: #0284c7; color: #0284c7;">
+            Get Commuter Pass &rarr;
+          </a>
+        </div>
+
+        <!-- Featured All-Access Plan -->
+        <div class="plan-card featured">
+          <div class="popular-badge">⭐ Best Value &amp; Popular</div>
+          <div>
+            <h3 class="plan-title" style="color: var(--primary);">All-Access Dhaka Pass</h3>
+            <p class="subtitle">Complete flexibility across the city</p>
+            <div class="plan-price" style="color: var(--primary);">৳ 9,000 <span>/ month</span></div>
+            <ul class="plan-features">
+              <li><span class="check-icon">✓</span> <strong>Unlimited 24/7 Access</strong> across all zones</li>
+              <li><span class="check-icon">✓</span> Express VIP entry &amp; reserved prime spots</li>
+              <li><span class="check-icon">✓</span> Free EV charging station support</li>
+              <li><span class="check-icon">✓</span> Priority 24/7 hotline assistance</li>
+            </ul>
+          </div>
+          <a href="contact support.html" class="btn btn-md btn-primary btn-full" style="box-shadow: 0 4px 12px rgba(21, 128, 61, 0.3);">
+            🚀 Get Unlimited All-Access Pass
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Interactive Filter Script -->
+  <script>
+    function filterZones(category, element) {
+      document.querySelectorAll('.pill-group .btn-pill').forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
+
+      const rows = document.querySelectorAll('#zones-table-body tr');
+      rows.forEach(row => {
+        if (category === 'all') {
+          row.style.display = '';
+        } else {
+          const matches = row.getAttribute('data-' + category) === 'true';
+          row.style.display = matches ? '' : 'none';
+        }
+      });
+    }
+  </script>
+  <script src="../js/guest.js"></script>
+</body>
+</html>

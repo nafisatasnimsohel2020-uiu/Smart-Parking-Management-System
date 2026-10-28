@@ -1,0 +1,149 @@
+/* ParkSmart - Manager Reservations CSS */
+
+.table-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  width: 350px;
+  max-width: 100%;
+  padding: 8px 14px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #319795;
+  box-shadow: 0 0 0 2px rgba(49, 151, 149, 0.15);
+}
+
+.btn-primary {
+  background-color: #319795;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: #285e61;
+}
+
+/* Data Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th {
+  font-size: 11px;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  border-bottom: 2px solid #edf2f7;
+  padding: 12px 10px;
+}
+
+.data-table td {
+  padding: 12px 10px;
+  font-size: 13px;
+  border-bottom: 1px solid #edf2f7;
+  color: #2d3748;
+  vertical-align: middle;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f7fafc;
+}
+
+/* Status Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.badge.booked {
+  background-color: #ebf8ff;
+  color: #2b6cb0;
+  border: 1px solid #bee3f8;
+}
+
+.badge.active {
+  background-color: #c6f6d5;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
+}
+
+.badge.complete, .badge.completed {
+  background-color: #edf2f7;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+}
+
+.badge.upcoming {
+  background-color: #fefcbf;
+  color: #744210;
+  border: 1px solid #faf089;
+}
+
+.badge.cancelled {
+  background-color: #fed7d7;
+  color: #9b2c2c;
+  border: 1px solid #feb2b2;
+}
+
+/* Payment Status Pills */
+.pay-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.pay-pill.paid { background: #def7ec; color: #03543f; }
+.pay-pill.pending { background: #fef08a; color: #713f12; }
+.pay-pill.fine { background: #fee2e2; color: #991b1b; }
+
+/* Table Action Buttons */
+.action-btn-sm {
+  padding: 5px 11px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.action-btn-sm.btn-detail { background: #edf2f7; color: #2d3748; }
+.action-btn-sm.btn-detail:hover { background: #e2e8f0; }
+
+.action-btn-sm.btn-checkin { background: #319795; color: #ffffff; }
+.action-btn-sm.btn-checkin:hover { background: #285e61; }
+
+.action-btn-sm.btn-complete { background: #38a169; color: #ffffff; }
+.action-btn-sm.btn-complete:hover { background: #276749; }

@@ -1,0 +1,263 @@
+/* ParkSmart - Manager Overview Comprehensive Styles */
+
+.stats-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border: 1px solid #edf2f7;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.07);
+}
+
+.stat-card span.stat-label {
+  font-size: 11px;
+  color: #718096;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.stat-card h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.stat-card p.stat-desc {
+  font-size: 11px;
+  color: #a0aec0;
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+/* Distinct Card Accent Borders */
+.stat-card.stat-avail { border-left: 4px solid #38a169; }
+.stat-card.stat-active { border-left: 4px solid #3182ce; }
+.stat-card.stat-booked { border-left: 4px solid #805ad5; }
+.stat-card.stat-upcoming { border-left: 4px solid #d69e2e; }
+.stat-card.stat-complete { border-left: 4px solid #4a5568; }
+.stat-card.stat-revenue { border-left: 4px solid #319795; }
+.stat-card.stat-fines { border-left: 4px solid #e53e3e; }
+
+/* 2-Column Operational Insights */
+.insights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.insight-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border: 1px solid #edf2f7;
+}
+
+.insight-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.insight-card-header h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0;
+}
+
+.insight-card-header span {
+  font-size: 12px;
+  color: #718096;
+}
+
+/* Multi-Segment Occupancy Bar */
+.occupancy-bar-track {
+  background: #edf2f7;
+  height: 14px;
+  border-radius: 7px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.occupancy-segment {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.occ-occupied { background: #e53e3e; }
+.occ-reserved { background: #ecc94b; }
+.occ-free { background: #38a169; }
+
+.occupancy-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #4a5568;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* Payment Summary Widget */
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.payment-box {
+  background: #f7fafc;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #edf2f7;
+}
+
+.payment-box-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.payment-box-amt {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-top: 4px;
+}
+
+/* Status Filter Tabs */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-tab-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #cbd5e0;
+  background: #edf2f7;
+  color: #2d3748;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-tab-btn:hover {
+  background: #e2e8f0;
+}
+
+.filter-tab-btn.active {
+  background: #319795;
+  color: #ffffff;
+  border-color: #319795;
+}
+
+/* Enhanced Badges */
+.badge.booked {
+  background-color: #ebf8ff;
+  color: #2b6cb0;
+  border: 1px solid #bee3f8;
+}
+
+.badge.active {
+  background-color: #c6f6d5;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
+}
+
+.badge.complete, .badge.completed {
+  background-color: #edf2f7;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+}
+
+.badge.upcoming {
+  background-color: #fefcbf;
+  color: #744210;
+  border: 1px solid #faf089;
+}
+
+.badge.cancelled {
+  background-color: #fed7d7;
+  color: #9b2c2c;
+  border: 1px solid #feb2b2;
+}
+
+/* Small Payment Badges */
+.pay-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.pay-pill.paid { background: #def7ec; color: #03543f; }
+.pay-pill.pending { background: #fef08a; color: #713f12; }
+.pay-pill.fine { background: #fee2e2; color: #991b1b; }
+
+/* Action Buttons in Table */
+.action-btn-sm {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.action-btn-sm.btn-detail { background: #edf2f7; color: #2d3748; }
+.action-btn-sm.btn-detail:hover { background: #e2e8f0; }
+.action-btn-sm.btn-checkin { background: #319795; color: #ffffff; }
+.action-btn-sm.btn-checkin:hover { background: #285e61; }
+.action-btn-sm.btn-complete { background: #38a169; color: #ffffff; }
+.action-btn-sm.btn-complete:hover { background: #276749; }

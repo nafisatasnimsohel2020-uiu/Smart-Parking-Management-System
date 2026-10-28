@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Details - Smart Parking</title>
+  <link rel="stylesheet" href="html.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo-area">
+        <div class="logo-icon">P</div>
+        <div class="logo-text">
+          <h2>Smart Parking</h2>
+          <p>Guest Access</p>
+        </div>
+      </div>
+      
+      <div class="user-session">
+  <div class="user-info">
+    <p><strong>Guest Account</strong></p>
+    <span class="badge badge-success" style="font-size: 0.75rem;">Public Mode</span>
+  </div>
+  <div class="avatar">GA</div>
+</div>
+
+
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="parking.html" class="active">Parking Details</a></li>
+        <li><a href="locations.html">Locations &amp; Pricing</a></li>
+        <li><a href="contact support.html">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-bottom"><a href="../admin/index.html" class="logout-btn">Logout</a></div>
+  </aside>
+
+  <!-- Main Content Body -->
+  <main class="main-content">
+
+    <div class="header-section">
+      <div>
+        <h1>Parking Details &amp; Reservations</h1>
+        <p class="subtitle">Detailed view for selected parking zone. Please log in to complete bookings.</p>
+      </div>
+    </div>
+
+    <!-- 1. SELECTED ZONE DETAILS -->
+    
+    <!-- Mirpur Zone Card -->
+    <div id="mirpur" class="card zone-detail-card mb-32">
+      <div class="header-section" style="margin-bottom: 12px; padding-bottom: 8px;">
+        <div>
+          <h2>Selected Location: Mirpur Parking (MIR-01)</h2>
+          <p class="subtitle">Primary Facility • Section 10, Mirpur, Dhaka</p>
+        </div>
+        <a href="../admin/login.html" class="btn btn-md btn-primary">Reserve Spot Now</a>
+      </div>
+      <div class="grid-cards mb-16" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        <div class="card metric-card">
+          <p class="subtitle">Hourly Rate</p>
+          <h3 class="metric-value">৳ 100.0</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Total Spaces</p>
+          <h3 class="metric-value text-success">20 Bays</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Operating Hours</p>
+          <h3 class="metric-value">24 / 7</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motijheel Zone Card -->
+    <div id="motijheel" class="card zone-detail-card mb-32">
+      <div class="header-section" style="margin-bottom: 12px; padding-bottom: 8px;">
+        <div>
+          <h2>Selected Location: Motijheel Parking (MOT-02)</h2>
+          <p class="subtitle">Commercial Hub • Motijheel C/A, Dhaka</p>
+        </div>
+        <a href="../admin/login.html" class="btn btn-md btn-primary">Reserve Spot Now</a>
+      </div>
+      <div class="grid-cards mb-16" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        <div class="card metric-card">
+          <p class="subtitle">Hourly Rate</p>
+          <h3 class="metric-value">৳ 200.0</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Total Spaces</p>
+          <h3 class="metric-value text-success">20 Bays</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Operating Hours</p>
+          <h3 class="metric-value">24 / 7</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gulshan Zone Card -->
+    <div id="gulshan" class="card zone-detail-card mb-32">
+      <div class="header-section" style="margin-bottom: 12px; padding-bottom: 8px;">
+        <div>
+          <h2>Selected Location: Gulshan Parking (GUL-03)</h2>
+          <p class="subtitle">Plaza Facility • Road 45, Gulshan-2, Dhaka</p>
+        </div>
+        <a href="../admin/login.html" class="btn btn-md btn-primary">Reserve Spot Now</a>
+      </div>
+      <div class="grid-cards mb-16" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        <div class="card metric-card">
+          <p class="subtitle">Hourly Rate</p>
+          <h3 class="metric-value">৳ 250.0</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Total Spaces</p>
+          <h3 class="metric-value text-success">20 Bays</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Operating Hours</p>
+          <h3 class="metric-value">24 / 7</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dhanmondi Zone Card -->
+    <div id="dhanmondi" class="card zone-detail-card mb-32">
+      <div class="header-section" style="margin-bottom: 12px; padding-bottom: 8px;">
+        <div>
+          <h2>Selected Location: Dhanmondi Parking (DHN-04)</h2>
+          <p class="subtitle">Lakefront Facility • Road 27, Dhanmondi, Dhaka</p>
+        </div>
+        <a href="../admin/login.html" class="btn btn-md btn-primary">Reserve Spot Now</a>
+      </div>
+      <div class="grid-cards mb-16" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        <div class="card metric-card">
+          <p class="subtitle">Hourly Rate</p>
+          <h3 class="metric-value">৳ 300.0</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Total Spaces</p>
+          <h3 class="metric-value text-success">20 Bays</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Operating Hours</p>
+          <h3 class="metric-value">07:00 AM - 10:00 PM</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- UIU Campus Zone Card -->
+    <div id="uiu" class="card zone-detail-card mb-32">
+      <div class="header-section" style="margin-bottom: 12px; padding-bottom: 8px;">
+        <div>
+          <h2>Selected Location: UIU Campus Smart Parking (UIU-05)</h2>
+          <p class="subtitle">United International University • Madani Avenue, Badda, Dhaka</p>
+        </div>
+        <a href="../admin/login.html" class="btn btn-md btn-primary">Reserve Spot Now</a>
+      </div>
+      <div class="grid-cards mb-16" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        <div class="card metric-card">
+          <p class="subtitle">Hourly Rate</p>
+          <h3 class="metric-value">৳ 30.0</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Total Spaces</p>
+          <h3 class="metric-value text-success">30 Bays</h3>
+        </div>
+        <div class="card metric-card">
+          <p class="subtitle">Operating Hours</p>
+          <h3 class="metric-value">24 / 7 (UIU Priority)</h3>
+        </div>
+        <div class="card metric-card" style="border: 1px solid #bee3f8; background: #ebf8ff;">
+          <p class="subtitle" style="color: #2b6cb0; font-weight:600;">UIU Driver Discount</p>
+          <h3 class="metric-value" style="color: #2b6cb0; font-size: 1.25rem;">25% OFF</h3>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 2. OTHER AVAILABLE ZONES TABLE -->
+    <div class="card mb-32">
+      <h3 class="card-title">All Other Parking Areas &amp; Statuses</h3>
+      <p class="subtitle mb-16">Browse all operating locations across the network:</p>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Zone Name</th>
+              <th>Location Code</th>
+              <th>Total Capacity</th>
+              <th>Rate / Hour</th>
+              <th>Supported Amenities</th>
+              <th>Quick Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mirpur Parking</strong></td>
+              <td>MIR-01</td>
+              <td>20 Spots</td>
+              <td>৳ 100.0</td>
+              <td><span class="status-badge paid">⚡ EV Charger</span> <span class="status-badge paid">🎥 CCTV</span></td>
+              <td>
+                <a href="../admin/login.html" class="btn btn-sm btn-primary">Book Spot</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Motijheel Parking</strong></td>
+              <td>MOT-02</td>
+              <td>20 Spots</td>
+              <td>৳ 200.0</td>
+              <td><span class="status-badge paid">🚗 Valet</span> <span class="status-badge paid">🎥 CCTV</span></td>
+              <td>
+                <a href="../admin/login.html" class="btn btn-sm btn-primary">Book Spot</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Gulshan Parking</strong></td>
+              <td>GUL-03</td>
+              <td>20 Spots</td>
+              <td>৳ 250.0</td>
+              <td><span class="status-badge paid">⚡ Fast EV</span> <span class="status-badge paid">🕒 24/7</span></td>
+              <td>
+                <a href="../admin/login.html" class="btn btn-sm btn-primary">Book Spot</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Dhanmondi Parking</strong></td>
+              <td>DHN-04</td>
+              <td>20 Spots</td>
+              <td>৳ 300.0</td>
+              <td><span class="status-badge paid">🏍️ Bike Parking</span> <span class="status-badge paid">🛡️ Guard</span></td>
+              <td>
+                <a href="../admin/login.html" class="btn btn-sm btn-primary">Book Spot</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>UIU Campus Smart Parking</strong></td>
+              <td>UIU-05</td>
+              <td>30 Spots</td>
+              <td>৳ 30.0</td>
+              <td><span class="status-badge paid">⚡ EV Charger</span> <span class="status-badge paid">🎓 UIU Priority</span> <span class="status-badge paid">🕒 24/7</span></td>
+              <td>
+                <a href="../admin/login.html" class="btn btn-sm btn-primary">Book Spot</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- 3. DYNAMIC RESERVATION FORMS (Requires Account Login) -->
+    
+    <!-- Mirpur Form -->
+    <div id="reserve-mirpur" class="card reservation-section mb-32">
+      <div class="header-section" style="margin-bottom: 16px; padding-bottom: 8px;">
+        <h2>Reserve Spot — Mirpur Parking (MIR-01)</h2>
+        <a href="#close" class="btn btn-sm btn-secondary">✕ Close Form</a>
+      </div>
+      <div style="background: #eff6ff; padding: 12px; border-radius: 6px; margin-bottom: 16px; color: #1e40af;">
+        ℹ️ You are browsing as a <strong>Guest Account</strong>. Please <a href="../admin/login.html" style="color: #2563eb; text-decoration: underline;">log in or register</a> to confirm official bookings.
+      </div>
+      <form action="../admin/login.html" method="GET" class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="form-group">
+          <label>Driver Full Name</label>
+          <input type="text" placeholder="e.g. Tanvir Ahmed" required>
+        </div>
+        <div class="form-group">
+          <label>Vehicle Plate Number</label>
+          <input type="text" placeholder="e.g. DHAKA-METRO-GA-1234" required>
+        </div>
+        <div class="form-group">
+          <label>Reservation Date</label>
+          <input type="date" required>
+        </div>
+        <div class="form-group">
+          <label>Estimated Hours</label>
+          <select>
+            <option>1 Hour (৳ 100)</option>
+            <option>2 Hours (৳ 200)</option>
+            <option>4 Hours (৳ 400)</option>
+            <option>Full Day (৳ 800)</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column: 1 / -1; margin-top: 10px;">
+          <button type="submit" class="btn btn-md btn-primary">Log In to Confirm Reservation</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Motijheel Form -->
+    <div id="reserve-motijheel" class="card reservation-section mb-32">
+      <div class="header-section" style="margin-bottom: 16px; padding-bottom: 8px;">
+        <h2>Reserve Spot — Motijheel Parking (MOT-02)</h2>
+        <a href="#close" class="btn btn-sm btn-secondary">✕ Close Form</a>
+      </div>
+      <div style="background: #eff6ff; padding: 12px; border-radius: 6px; margin-bottom: 16px; color: #1e40af;">
+        ℹ️ You are browsing as a <strong>Guest Account</strong>. Please <a href="../admin/login.html" style="color: #2563eb; text-decoration: underline;">log in or register</a> to confirm official bookings.
+      </div>
+      <form action="../admin/login.html" method="GET" class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="form-group">
+          <label>Driver Full Name</label>
+          <input type="text" placeholder="e.g. Rahim Chowdhury" required>
+        </div>
+        <div class="form-group">
+          <label>Vehicle Plate Number</label>
+          <input type="text" placeholder="e.g. DHAKA-METRO-HA-5678" required>
+        </div>
+        <div class="form-group">
+          <label>Reservation Date</label>
+          <input type="date" required>
+        </div>
+        <div class="form-group">
+          <label>Estimated Hours</label>
+          <select>
+            <option>1 Hour (৳ 200)</option>
+            <option>2 Hours (৳ 400)</option>
+            <option>Full Day (৳ 1500)</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column: 1 / -1; margin-top: 10px;">
+          <button type="submit" class="btn btn-md btn-primary">Log In to Confirm Reservation</button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+  <script src="../js/guest.js"></script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f4f7fe;
+    color: #2b3674;
+    min-height: 100vh;
+}
+
+/* Sidebar Layout */
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #4318ff;
+    color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.logo-text h2 {
+    font-size: 16px;
+    color: #1b2559;
+    line-height: 1.2;
+}
+
+.logo-text p {
+    font-size: 11px;
+    color: #a3aed0;
+}
+
+.user-session {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #f4f7fe;
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #05cd99;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.user-info h4 {
+    font-size: 13px;
+    color: #1b2559;
+}
+
+.user-info p {
+    font-size: 11px;
+    color: #05cd99;
+    font-weight: 500;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #707ebe;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 10px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    background-color: #4318ff;
+    color: #ffffff;
+}
+
+.logout-btn {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    background-color: #ffe5e5;
+    color: #ee5d50;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #ee5d50;
+    color: #ffffff;
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 260px;
+    padding: 32px;
+    width: calc(100% - 260px);
+}
+
+.header-section {
+    margin-bottom: 24px;
+}
+
+.header-section h1 {
+    font-size: 28px;
+    color: #1b2559;
+}
+
+.subtitle {
+    color: #707ebe;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.section-title {
+    font-size: 18px;
+    color: #1b2559;
+    margin: 28px 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Real-time live indicator pulse badge */
+.section-title::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #05cd99;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(5, 205, 153, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(5, 205, 153, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(5, 205, 153, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(5, 205, 153, 0);
+    }
+}
+
+/* Parking Grid Layout */
+.parking-grid {
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.parking-card {
+    background-color: #ffffff;
+    border: 1px solid #e9edf7;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: 0.3s ease;
+}
+
+.parking-card:hover {
+    border-color: #4318ff;
+    transform: translateX(3px);
+}
+
+.parking-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.parking-card-header h3 {
+    font-size: 16px;
+    color: #1b2559;
+}
+
+.rating-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffb800;
+}
+
+.location-detail {
+    font-size: 13px;
+    color: #707ebe;
+}
+
+.availability-detail {
+    font-size: 14px;
+    color: #2b3674;
+}
+
+.availability-detail strong {
+    color: #1b2559;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px solid #f4f7fe;
+}
+
+.rate-badge {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4318ff;
+}
+
+.parking-card button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4318ff;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.parking-card button:hover {
+    background-color: #3311db;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(67, 24, 255, 0.25);
+}
+
+/* Modal Styles for Reservation */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 37, 89, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 28px;
+    border-radius: 18px;
+    width: 480px;
+    max-width: 92%;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.driver-space-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 2px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.driver-space-item.free {
+    background-color: #c6f6d5;
+    color: #22543d;
+    border: 1px solid #38a169;
+    cursor: pointer;
+}
+
+.driver-space-item.free:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(56, 161, 105, 0.25);
+}
+
+.driver-space-item.booked {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+    border: 1px solid #feb2b2;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.driver-space-item.selected {
+    background-color: #4318ff !important;
+    color: #ffffff !important;
+    border: 2px solid #2b11b5 !important;
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(67, 24, 255, 0.35);
+}
+
+.modal-content h3 {
+    font-size: 18px;
+    color: #1b2559;
+    margin-bottom: 4px;
+}
+
+.modal-subtitle {
+    font-size: 13px;
+    color: #707ebe;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1b2559;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e9edf7;
+    border-radius: 12px;
+    background-color: #f4f7fe;
+    color: #2b3674;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #4318ff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(67, 24, 255, 0.1);
+}
+
+.time-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.cost-box {
+    background-color: #f4f7fe;
+    border: 1px solid #e9edf7;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.cost-box .amount {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4318ff;
+}
+
+.cost-box .details {
+    font-size: 12px;
+    color: #707ebe;
+    margin-top: 4px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-cancel {
+    background-color: #ffe5e5;
+    color: #ee5d50;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-cancel:hover {
+    background-color: #ee5d50;
+    color: #ffffff;
+}
+
+.btn-confirm {
+    background-color: #05cd99;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-confirm:hover {
+    background-color: #04b386;
+    box-shadow: 0 4px 10px rgba(5, 205, 153, 0.25);
+}
+
+/* Hidden Utility Class */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .parking-card button {
+        width: 100%;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .btn-cancel, .btn-confirm {
+        width: 100%;
+        text-align: center;
+    }
+}

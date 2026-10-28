@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking History - Smart Parking System</title>
+    <link rel="stylesheet" href="parking-history.css">
+</head>
+<body>
+
+    <!-- Sidebar Layout -->
+    <aside class="sidebar">
+        <div>
+            <div class="logo-area">
+                <div class="logo-icon">P</div>
+                <div class="logo-text">
+                    <h2>Smart Parking</h2>
+                    <p>System Dashboard</p>
+                </div>
+            </div>
+
+            <div class="user-session">
+                <div class="avatar">SS</div>
+                <div class="user-info">
+                    <h4>Sharmila Shikder</h4>
+                    <p>Active User</p>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="find-parking.html">Find Parking</a></li>
+                <li><a href="my-reservations.html">My Reservations</a></li>
+                <li><a href="parking-history.html" class="active">Parking History</a></li>
+                <li><a href="report-issue.html">Report Issue</a></li>
+                <li><a href="chat.html">Chat with Manager</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="../admin/index.html" class="logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content">
+        <div class="header-section">
+            <div>
+                <h1>Parking History</h1>
+                <p class="subtitle">View your past reservations and download receipts</p>
+            </div>
+            
+            <div class="summary-card">
+                <span class="summary-label">Total Spent</span>
+                <span class="summary-amount" id="totalSpentAmount">৳0</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">All Past Reservations</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Location</th>
+                        <th>Space</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Hours</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Rating</th>
+                        <th>Receipt</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                    <tr>
+                        <td class="booking-id">R-4819</td>
+                        <td>Gulshan Parking</td>
+                        <td>D-12</td>
+                        <td>Jul 10, 2025</td>
+                        <td>10:00–14:00</td>
+                        <td>4h</td>
+                        <td class="amount">৳300</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td>-</td>
+                        <td><button class="btn-pdf">PDF</button></td>
+                    </tr>
+                    <tr>
+                        <td class="booking-id">R-4802</td>
+                        <td>Mirpur Parking</td>
+                        <td>A-07</td>
+                        <td>Jul 8, 2025</td>
+                        <td>08:00–10:00</td>
+                        <td>2h</td>
+                        <td class="amount">৳600</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td><button class="btn-pdf">PDF</button></td>
+                    </tr>
+                    <tr>
+                        <td class="booking-id">R-4791</td>
+                        <td>Motijheel Parking</td>
+                        <td>B-15</td>
+                        <td>Jul 5, 2025</td>
+                        <td>13:00–16:00</td>
+                        <td>3h</td>
+                        <td class="amount">৳900</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td><button class="btn-pdf">PDF</button></td>
+                    </tr>
+                    <tr>
+                        <td class="booking-id">R-4780</td>
+                        <td>Dhanmondi Parking</td>
+                        <td>C-33</td>
+                        <td>Jul 1, 2025</td>
+                        <td>09:00–12:00</td>
+                        <td>3h</td>
+                        <td class="amount">৳600</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td><button class="btn-pdf">PDF</button></td>
+                    </tr>
+                    <tr>
+                        <td class="booking-id">R-4770</td>
+                        <td>Mirpur Parking</td>
+                        <td>A-21</td>
+                        <td>Jun 28, 2025</td>
+                        <td>07:30–09:30</td>
+                        <td>2h</td>
+                        <td class="amount">৳300</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td><button class="btn-pdf">PDF</button></td>
+                    </tr>
+                    <tr>
+                        <td class="booking-id">R-4755</td>
+                        <td>Gulshan Parking</td>
+                        <td>D-44</td>
+                        <td>Jun 24, 2025</td>
+                        <td>14:00–18:00</td>
+                        <td>4h</td>
+                        <td class="amount">৳600</td>
+                        <td><span class="status cancelled">Cancelled</span></td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+<script src="../js/session.js"></script>
+<script src="../js/driver.js"></script>
+</body>
+</html>

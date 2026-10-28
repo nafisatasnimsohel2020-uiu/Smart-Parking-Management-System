@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Parking - Smart Parking System</title>
+    <link rel="stylesheet" href="find-parking.css">
+</head>
+<body>
+
+    <!-- Sidebar Layout -->
+    <aside class="sidebar">
+        <div>
+            <div class="logo-area">
+                <div class="logo-icon">P</div>
+                <div class="logo-text">
+                    <h2>Smart Parking</h2>
+                    <p>System Dashboard</p>
+                </div>
+            </div>
+
+            <div class="user-session">
+                <div class="avatar">SS</div>
+                <div class="user-info">
+                    <h4>Sharmila Shikder</h4>
+                    <p>Active User</p>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="find-parking.html" class="active">Find Parking</a></li>
+                <li><a href="my-reservations.html">My Reservations</a></li>
+                <li><a href="parking-history.html">Parking History</a></li>
+                <li><a href="report-issue.html">Report Issue</a></li>
+                <li><a href="chat.html">Chat with Manager</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-bottom">
+            <a href="../admin/index.html" class="logout-btn">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content">
+        <div class="header-section">
+            <h1>Find Parking</h1>
+            <p class="subtitle">Discover real-time availability and reserve parking spaces</p>
+        </div>
+
+        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:12px 18px; margin-bottom:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <div style="font-size:13px; color:#166534;">
+                ⚡ <strong>Smart Auto-Free Active:</strong> Parking spaces automatically free up when reservation time expires. UIU Students & Faculty receive an exclusive <strong>25% discount</strong> across all locations!
+            </div>
+            <span style="background:#22c55e; color:#fff; font-size:11px; font-weight:700; padding:3px 10px; border-radius:12px; text-transform:uppercase;">Live Real-Time Sync</span>
+        </div>
+
+        <h2 class="section-title">Real-time availability across all locations</h2>
+
+        <div class="parking-grid" id="parkingGrid">
+            <div class="parking-card" data-name="Mirpur Parking" data-rate="100">
+                <div class="parking-card-header">
+                    <h3>Mirpur Parking</h3>
+                    <span class="rating-val">★ 4.8</span>
+                </div>
+                <p class="location-detail">Mirpur-10, Dhaka · 0.3 km</p>
+                <p class="availability-detail">Availability: <strong>34 of 120</strong> spaces available (28% free)</p>
+                <div class="card-footer">
+                    <span class="rate-badge">৳100/hr</span>
+                    <button class="reserve-btn">Reserve a Space</button>
+                </div>
+            </div>
+
+            <div class="parking-card" data-name="Motijheel Parking" data-rate="200">
+                <div class="parking-card-header">
+                    <h3>Motijheel Parking</h3>
+                    <span class="rating-val">★ 4.5</span>
+                </div>
+                <p class="location-detail">Motijheel C/A, Dhaka · 1.1 km</p>
+                <p class="availability-detail">Availability: <strong>12 of 80</strong> spaces available (15% free)</p>
+                <div class="card-footer">
+                    <span class="rate-badge">৳200/hr</span>
+                    <button class="reserve-btn">Reserve a Space</button>
+                </div>
+            </div>
+
+            <div class="parking-card" data-name="Dhanmondi Parking" data-rate="300">
+                <div class="parking-card-header">
+                    <h3>Dhanmondi Parking</h3>
+                    <span class="rating-val">★ 4.3</span>
+                </div>
+                <p class="location-detail">Dhanmondi 27, Dhaka · 2.4 km</p>
+                <p class="availability-detail">Availability: <strong>87 of 200</strong> spaces available (44% free)</p>
+                <div class="card-footer">
+                    <span class="rate-badge">৳300/hr</span>
+                    <button class="reserve-btn">Reserve a Space</button>
+                </div>
+            </div>
+
+            <div class="parking-card" data-name="Gulshan Parking" data-rate="250">
+                <div class="parking-card-header">
+                    <h3>Gulshan Parking</h3>
+                    <span class="rating-val">★ 4.9</span>
+                </div>
+                <p class="location-detail">Gulshan-2, Dhaka · 3.8 km</p>
+                <p class="availability-detail">Availability: <strong>90 of 150</strong> spaces available (60% free)</p>
+                <div class="card-footer">
+                    <span class="rate-badge">৳250/hr</span>
+                    <button class="reserve-btn">Reserve a Space</button>
+                </div>
+            </div>
+
+            <div class="parking-card" data-name="UIU Campus Smart Parking" data-rate="30">
+                <div class="parking-card-header">
+                    <h3>UIU Campus Smart Parking</h3>
+                    <span class="rating-val">★ 4.9</span>
+                </div>
+                <p class="location-detail">United International University, Madani Avenue, Badda, Dhaka</p>
+                <p class="availability-detail">Availability: <strong>28 of 30</strong> spaces available (93% free)</p>
+                <div class="card-footer">
+                    <span class="rate-badge">৳30/hr</span>
+                    <button class="reserve-btn">Reserve a Space</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Popup Component (Hidden by default) -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3>Reserve a Space</h3>
+            <div id="modalSubtitle" class="modal-subtitle">Mirpur Parking · ৳100/hr</div>
+            
+            <div class="form-group">
+                <label>Reservation Date</label>
+                <input type="date" id="resDate">
+            </div>
+
+            <div class="form-group">
+                <label>Time Slot (Check-In & Check-Out)</label>
+                <div class="time-inputs">
+                    <input type="time" id="resStart">
+                    <input type="time" id="resEnd">
+                </div>
+            </div>
+
+            <!-- Live Slot Availability Banner -->
+            <div id="slotAvailabilityBanner" style="padding:10px 14px; border-radius:8px; font-size:12px; font-weight:600; margin-bottom:12px; display:flex; align-items:center; gap:8px; background:#f0fdf4; border:1px solid #bbf7d0; color:#166534;">
+                <span id="slotAvailabilityIcon">🟢</span>
+                <span id="slotAvailabilityText">Checking slot availability for selected date & time...</span>
+            </div>
+
+            <div class="form-group" style="display:flex; gap:10px; flex-wrap:wrap;">
+                <div style="flex:1; min-width:140px;">
+                    <label>Vehicle Type</label>
+                    <select id="resVehicleType" style="width:100%; padding:10px 12px; border:1px solid #cbd5e0; border-radius:10px; font-size:13px; background:#fff;">
+                        <option value="Car / Sedan">🚗 Car / Sedan</option>
+                        <option value="SUV / 4x4">🚙 SUV / 4x4</option>
+                        <option value="Motorcycle">🏍️ Motorcycle</option>
+                        <option value="Electric Vehicle (EV)">⚡ Electric Vehicle (EV)</option>
+                    </select>
+                </div>
+                <div style="flex:1; min-width:140px;" id="resPlateGroup">
+                    <label>Vehicle Plate</label>
+                    <input type="text" id="resPlate" placeholder="e.g. DHA-GA-11-2233" style="width:100%; padding:10px 12px; border:1px solid #cbd5e0; border-radius:10px; font-size:13px;">
+                </div>
+            </div>
+
+            <div class="form-group" id="driverSpacesGroup">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <label style="margin:0;">Select Parking Spot</label>
+                    <span id="selectedSpaceLabel" style="font-size:12px; font-weight:600; color:#4318ff;">Auto-selecting free space</span>
+                </div>
+                <div style="display:flex; gap:12px; font-size:11px; margin-bottom:8px; color:#718096; flex-wrap:wrap;">
+                    <span style="display:inline-flex; align-items:center; gap:4px;"><span style="display:inline-block; width:10px; height:10px; border-radius:2px; background:#c6f6d5; border:1px solid #38a169;"></span> Free</span>
+                    <span style="display:inline-flex; align-items:center; gap:4px;"><span style="display:inline-block; width:10px; height:10px; border-radius:2px; background:#fed7d7; border:1px solid #e53e3e;"></span> Booked / Occupied</span>
+                    <span style="display:inline-flex; align-items:center; gap:4px;"><span style="display:inline-block; width:10px; height:10px; border-radius:2px; background:#4318ff;"></span> Selected</span>
+                </div>
+                <div id="driverSpaceGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(48px, 1fr)); gap:6px; max-height:120px; overflow-y:auto; padding:8px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px;">
+                    <div style="grid-column: 1 / -1; text-align:center; color:#a0aec0; font-size:12px; padding:10px;">Loading parking spaces...</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Payment Method</label>
+                <select id="resPaymentMethod" style="width:100%; padding:10px 12px; border:1px solid #cbd5e0; border-radius:10px; font-size:13px; background:#fff;">
+                    <option value="bKash">📱 bKash (Instant Mobile Wallet)</option>
+                    <option value="Nagad">📱 Nagad (Instant Mobile Wallet)</option>
+                    <option value="Rocket">📱 Rocket (DBBL Mobile Banking)</option>
+                    <option value="Credit/Debit Card">💳 Credit / Debit Card (Visa / Mastercard)</option>
+                    <option value="Pay on Arrival (Cash)">💵 Pay on Arrival (Cash to Facility Manager)</option>
+                </select>
+            </div>
+
+            <div id="uiuDiscountBadge" style="display:none; background:#ebf8ff; border:1px solid #bee3f8; color:#2b6cb0; padding:10px 14px; border-radius:10px; font-size:12px; font-weight:600; margin-bottom:12px;">
+                🎓 <strong>UIU Community Discount:</strong> 25% OFF applied to your booking!
+            </div>
+
+            <div class="cost-box">
+                <div id="modalCost" class="amount">৳300</div>
+                <div id="modalCostDetails" class="details">Based on 3 hours at ৳100/hr</div>
+            </div>
+
+            <div class="modal-actions">
+                <button id="cancelBtn" class="btn-cancel">Cancel</button>
+                <button class="btn-confirm" id="confirmReserveBtn">Confirm Reservation</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/session.js"></script>
+    <script src="../js/driver.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest Dashboard - Smart Parking Dhaka</title>
+  <link rel="stylesheet" href="html.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation (Guest Only) -->
+  <aside class="sidebar">
+    <div>
+      <div class="logo-area">
+        <div class="logo-icon">P</div>
+        <div class="logo-text">
+          <h2>Smart Parking</h2>
+          <p>Guest Access</p>
+        </div>
+      </div>
+      
+      <div class="user-session">
+  <div class="user-info">
+    <p><strong>Guest Account</strong></p>
+    <span class="badge badge-success" style="font-size: 0.75rem;">Public Mode</span>
+  </div>
+  <div class="avatar">GA</div>
+</div>
+
+      <!-- Guest Allowed Links Only -->
+      <ul class="nav-links">
+        <li><a href="home.html" class="active">Home</a></li>
+        <li><a href="parking.html">Parking Details</a></li>
+        <li><a href="locations.html">Locations &amp; Pricing</a></li>
+        <li><a href="contact support.html">Contact Support</a></li>
+      </ul>
+    </div>
+
+    <!-- Bottom Left Sidebar Logout Link -->
+    <div class="sidebar-bottom"><a href="../admin/index.html" class="logout-btn">Logout</a></div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    
+    <!-- Top Header -->
+    <div class="header-section">
+      <div>
+        <h1>Guest Dashboard</h1>
+        <p class="subtitle">Explore live parking availability, rates, and contact assistance across Dhaka.</p>
+      </div>
+      <div>
+        <a href="locations.html" class="btn btn-lg btn-primary">Locations &amp; Pricing</a>
+      </div>
+    </div>
+
+    <!-- Section 1: Quick Zone Search -->
+    <div class="top-search-card card mb-32">
+      <h2>Find Parking Zone</h2>
+      <p class="subtitle mb-16">Select a location shortcut to view status:</p>
+
+      <!-- Location Shortcuts -->
+      <div class="pill-group">
+        <a href="#search-mirpur" class="btn btn-pill">Mirpur</a>
+        <a href="#search-motijheel" class="btn btn-pill">Motijheel</a>
+        <a href="#search-gulshan" class="btn btn-pill">Gulshan</a>
+        <a href="#search-dhanmondi" class="btn btn-pill">Dhanmondi</a>
+        <a href="#search-uiu" class="btn btn-pill">UIU Campus</a>
+        <a href="#search-not-found" class="btn btn-pill btn-pill-danger">Other Areas</a>
+      </div>
+
+      <!-- Search Display Area -->
+      <div id="search-results">
+        
+        <div id="search-mirpur" class="result-card result-success">
+          <div class="result-card-header">
+            <div>
+              <h3>Available Zone: Mirpur Parking</h3>
+              <p class="subtitle">Rate: ৳ 100.0 / hr • Section 10, Mirpur, Dhaka</p>
+            </div>
+            <div class="btn-group">
+              <a href="parking.html#mirpur" class="btn btn-md btn-primary">View Zone Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="search-motijheel" class="result-card result-success">
+          <div class="result-card-header">
+            <div>
+              <h3>Available Zone: Motijheel Parking</h3>
+              <p class="subtitle">Rate: ৳ 200.0 / hr • Motijheel Commercial Area, Dhaka</p>
+            </div>
+            <div class="btn-group">
+              <a href="parking.html#motijheel" class="btn btn-md btn-primary">View Zone Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="search-gulshan" class="result-card result-success">
+          <div class="result-card-header">
+            <div>
+              <h3>Available Zone: Gulshan Parking</h3>
+              <p class="subtitle">Rate: ৳ 250.0 / hr • Road 45, Gulshan-2, Dhaka</p>
+            </div>
+            <div class="btn-group">
+              <a href="parking.html#gulshan" class="btn btn-md btn-primary">View Zone Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="search-dhanmondi" class="result-card result-success">
+          <div class="result-card-header">
+            <div>
+              <h3>Available Zone: Dhanmondi Parking</h3>
+              <p class="subtitle">Rate: ৳ 300.0 / hr • Road 27, Dhanmondi, Dhaka</p>
+            </div>
+            <div class="btn-group">
+              <a href="parking.html#dhanmondi" class="btn btn-md btn-primary">View Zone Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="search-uiu" class="result-card result-success">
+          <div class="result-card-header">
+            <div>
+              <h3>Available Zone: UIU Campus Smart Parking</h3>
+              <p class="subtitle">Rate: ৳ 30.0 / hr • United International University, Madani Avenue, Badda, Dhaka</p>
+              <p class="subtitle" style="color: #2b6cb0; font-weight:600; margin-top:4px;">🎓 Special: 25% UIU Driver Discount automatically applied for UIU students &amp; faculty!</p>
+            </div>
+            <div class="btn-group">
+              <a href="parking.html#uiu" class="btn btn-md btn-primary">View Zone Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="search-not-found" class="result-card result-danger">
+          <div class="result-card-header">
+            <div>
+              <h3 style="color: var(--danger);">Location Not Currently Available</h3>
+              <p class="subtitle">We currently do not offer smart parking in this zone. Submit an expansion request to our team.</p>
+            </div>
+            <a href="contact support.html" class="btn btn-md btn-dark">Contact Support</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Section 2: Guest General System Metrics -->
+    <div class="grid-cards mb-32">
+      <div class="card metric-card">
+        <p class="subtitle">Active Coverage Zones</p>
+        <h2 class="metric-value" id="guestMetricsLocations">5 Locations</h2>
+      </div>
+      <div class="card metric-card">
+        <p class="subtitle">Total System Capacity</p>
+        <h2 class="metric-value" id="guestMetricsCapacity">110 Spots</h2>
+      </div>
+      <div class="card metric-card">
+        <p class="subtitle">Available Open Spots</p>
+        <h2 class="metric-value text-success" id="guestMetricsAvailable">Loading...</h2>
+      </div>
+    </div>
+
+    <!-- Section 3: General Parking Rules & Facility Guidelines -->
+    <div class="card mb-32">
+      <h2>General Parking Rules &amp; Facility Guidelines</h2>
+      <p class="subtitle mb-20">All visitors and guests must abide by our facility parking policies:</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
+          <h4 style="margin:0 0 8px 0; color:#1e293b; display:flex; align-items:center; gap:8px;">🚗 1. Valid Bay Markings</h4>
+          <p style="margin:0; font-size:13px; color:#64748b; line-height:1.5;">Vehicles must be parked strictly within marked stall lines. Blocking aisles, pedestrian pathways, or double-parking is strictly prohibited.</p>
+        </div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
+          <h4 style="margin:0 0 8px 0; color:#1e293b; display:flex; align-items:center; gap:8px;">⏱️ 2. Speed Limits &amp; Safety</h4>
+          <p style="margin:0; font-size:13px; color:#64748b; line-height:1.5;">Strict speed limit of 10 km/h across all facilities. Headlights must remain on in multi-level basements. Pedestrians always have the right of way.</p>
+        </div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
+          <h4 style="margin:0 0 8px 0; color:#1e293b; display:flex; align-items:center; gap:8px;">⚡ 3. EV Charging Stations</h4>
+          <p style="margin:0; font-size:13px; color:#64748b; line-height:1.5;">Designated EV charging spots are reserved exclusively for electric vehicles undergoing active charging. Non-EV vehicles will be ticketed.</p>
+        </div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:16px;">
+          <h4 style="margin:0 0 8px 0; color:#1e293b; display:flex; align-items:center; gap:8px;">📱 4. Check-In &amp; OTP Verification</h4>
+          <p style="margin:0; font-size:13px; color:#64748b; line-height:1.5;">Drivers must present their 4-digit booking OTP to the parking manager upon arrival. Overstaying past scheduled reservation incurs standard hourly charges.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Permitted Guest Quick Navigation Actions -->
+    <div class="card mb-32">
+      <h2>Guest Services</h2>
+      <p class="subtitle mb-24">Select a public feature below to proceed:</p>
+      
+      <div class="quick-nav-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+        
+        <a href="parking.html" class="action-card" style="text-decoration: none; color: inherit;">
+          <div class="action-card-icon">🅿️</div>
+          <h3>General Parking Details</h3>
+          <p>Check floor plans, space types, and general occupancy counts.</p>
+          <span class="btn btn-md btn-primary">View Details &rarr;</span>
+        </a>
+
+        <a href="locations.html" class="action-card" style="text-decoration: none; color: inherit;">
+          <div class="action-card-icon">📍</div>
+          <h3>Locations &amp; Pricing</h3>
+          <p>Explore active zones, hourly rate sheets, and map coordinates.</p>
+          <span class="btn btn-md btn-primary">See Pricing &rarr;</span>
+        </a>
+
+        <a href="contact support.html" class="action-card" style="text-decoration: none; color: inherit;">
+          <div class="action-card-icon">✉️</div>
+          <h3>Contact &amp; Support</h3>
+          <p>Reach out to technical support or submit location expansion requests.</p>
+          <span class="btn btn-md btn-secondary">Get Support &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+
+  </main>
+  <script src="../js/guest.js"></script>
+</body>
+</html>

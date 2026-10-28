@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ParkSmart - Complete Reservations</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="manager-base.css">
+  <link rel="stylesheet" href="overview.css">
+  <link rel="stylesheet" href="reservations.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-area">
+        <div class="logo-icon"></div>
+        <div class="logo-text"><h2>Smart Parking</h2><p>Management System</p></div>
+      </div>
+      <div class="user-session">
+        <div class="avatar">M</div>
+        <div class="user-info"><h4>Facility Manager</h4><p>Active session</p></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="spacemap.html">Space Map</a></li>
+        <li class="active"><a href="reservations-all.html">Reservations</a></li>
+        <li><a href="checkin.html">Check-In / Out</a></li>
+        <li><a href="violations.html">Violations</a></li>
+        <li><a href="reports.html">Area Reports</a></li>
+        <li><a href="chat.html">Driver Chat</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-bottom"><a href="../admin/index.html" class="logout-btn">Logout</a></div>
+  </div>
+
+  <div class="main-content">
+    <div class="top-navbar">
+      <h3>Reservations</h3>
+      <div class="profile-pill"><div class="avatar">M</div> Facility Manager</div>
+    </div>
+    <div class="page-body">
+      <div class="page-header-sub">
+        <h1>Reservations</h1>
+        <p>Completed trip records</p>
+      </div>
+
+      <div class="data-table-container">
+        <div class="table-header-row" style="flex-wrap: wrap; gap: 10px;">
+          <input type="text" class="search-input" placeholder="Search by driver, plate, or booking ID...">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="reservations-all.html" class="btn-primary" style="background:#edf2f7; color:#2d3748; text-decoration:none;">All</a>
+            <a href="reservations-booked.html" class="btn-primary" style="background:#edf2f7; color:#2d3748; text-decoration:none;">Booked</a>
+            <a href="reservations-active.html" class="btn-primary" style="background:#edf2f7; color:#2d3748; text-decoration:none;">Active</a>
+            <a href="reservations-upcoming.html" class="btn-primary" style="background:#edf2f7; color:#2d3748; text-decoration:none;">Upcoming</a>
+            <a href="reservations-completed.html" class="btn-primary" style="background:#319795; text-decoration:none;">Complete</a>
+            <a href="reservations-cancelled.html" class="btn-primary" style="background:#edf2f7; color:#2d3748; text-decoration:none;">Cancelled</a>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>DRIVER</th>
+              <th>PLATE</th>
+              <th>SPACE</th>
+              <th>DATE</th>
+              <th>TIME</th>
+              <th>PAYMENT</th>
+              <th>AMOUNT</th>
+              <th>STATUS</th>
+              <th style="text-align: right;">ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="reservationsTableBody">
+            <tr><td colspan="10" style="text-align:center; padding:20px; color:#718096;">Loading completed trips...</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size: 12px; color: #a0aec0; margin-top: 15px;">0 reservations found</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking & Payment Details Modal -->
+  <div id="overviewBookingModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.6); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:#ffffff; width:520px; max-width:92%; border-radius:14px; padding:24px; box-shadow:0 20px 45px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom: 1px solid #edf2f7; padding-bottom: 12px;">
+        <div>
+          <h3 id="modalBookingCode" style="margin:0; font-size:18px; color:#1a202c; font-weight: 700;">Booking Details</h3>
+          <p id="modalBookingSub" style="margin:2px 0 0 0; font-size:12px; color:#718096;">Facility Trip Record</p>
+        </div>
+        <button id="closeBookingModalBtn" style="background:none; border:none; font-size:24px; cursor:pointer; color:#718096; line-height:1;">&times;</button>
+      </div>
+
+      <div id="modalBookingBody"></div>
+
+      <div id="modalBookingActions" style="display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; border-top:1px solid #edf2f7; padding-top:16px; margin-top: 16px;">
+        <button id="closeBookingModalActionBtn" class="action-btn-sm btn-detail" style="padding: 8px 16px; font-size: 13px;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/session.js"></script>
+  <script src="../js/manager.js"></script>
+</body>
+</html>
